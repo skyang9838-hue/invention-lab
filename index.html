@@ -1,0 +1,1426 @@
+<!doctype html>
+<html lang="ko" data-theme="light" data-brand="baemin">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>디지털과 연계한 발명 수업 · 실습·자료</title>
+<meta name="deck-version" content="lab-1">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Do+Hyeon&family=Gowun+Batang:wght@400;700&family=IBM+Plex+Sans+KR:wght@400;600;700&family=Nanum+Myeongjo:wght@400;700&family=Noto+Sans+KR:wght@400;600;700;900&display=swap">
+<style>
+/* deck 스킬 뼈대. 브랜드 토큰은 insane-design examples/<브랜드>/design.md에서 가져옴 */
+/* 장 기본은 성찰회 배치(sc-). 색·글꼴은 브랜드 변수 */
+:root {
+  --font: "SF Pro Display", "SF Pro Text", -apple-system, "Pretendard", "Apple SD Gothic Neo", "Malgun Gothic", "Helvetica Neue", Arial, sans-serif;
+  --font-d: var(--font);
+  --w-d: 600; --ls-d: -0.022em; --lh-d: 1.07;
+  --r-tile: 36px; --r-btn: 980px; --r-chip: 980px;
+  --shadow: none;
+  --side-w: 260px;
+}
+/* 애플 낮 */
+:root[data-theme="light"] {
+  --bg: #F5F5F7; --bg-alt: #FFFFFF;
+  --tile: #FFFFFF; --tile-alt: #F5F5F7;
+  --ink: #1D1D1F; --muted: #6E6E73; --soft: #86868B;
+  --accent: #0071E3; --accent-ink: #FFFFFF; --accent-text: #0071E3; --link: #0066CC;
+  --chip: #E8E8ED; --chip-ink: #424245;
+  --hairline: rgba(0,0,0,.16);
+  --side: #FAFAFC; --side-hover: #E8E8ED;
+  --pill: rgba(210,210,215,.64); --dot: rgba(0,0,0,.42); --dot-on: rgba(0,0,0,.8);
+}
+/* 애플 다크: 다크 위 파랑은 #2997FF */
+:root[data-theme="dark"] {
+  --bg: #000000; --bg-alt: #161617;
+  --tile: #1D1D1F; --tile-alt: #161617;
+  --ink: #F5F5F7; --muted: rgba(255,255,255,.56); --soft: rgba(255,255,255,.48);
+  --accent: #2997FF; --accent-ink: #FFFFFF; --accent-text: #2997FF; --link: #2997FF;
+  --chip: #333336; --chip-ink: #D2D2D7;
+  --hairline: rgba(255,255,255,.16);
+  --side: #161617; --side-hover: #272729;
+  --pill: rgba(51,51,54,.72); --dot: rgba(255,255,255,.42); --dot-on: rgba(255,255,255,.85);
+}
+/* 애플이 아닌 브랜드는 사이드바·내비 색을 본 색에서 계산 */
+html:not([data-brand="apple"])[data-theme] {
+  --side: var(--bg-alt);
+  --side-hover: color-mix(in srgb, var(--ink) 8%, transparent);
+  --pill: color-mix(in srgb, var(--ink) 12%, transparent);
+  --dot: color-mix(in srgb, var(--ink) 40%, transparent);
+  --dot-on: var(--ink);
+}
+
+/* ── 배민: 민트 간판 카피, 꾸밈 거의 없음 ── */
+html[data-brand="baemin"] { --font: "Noto Sans KR", "Pretendard", sans-serif; --font-d: "Do Hyeon", "Pretendard", sans-serif; --w-d: 400; --ls-d: -0.02em; --lh-d: 1.2; --r-tile: 24px; --r-btn: 999px; --r-chip: 999px; }
+html[data-brand="baemin"][data-theme="light"] { --bg: #F6F6F6; --bg-alt: #FFFFFF; --tile: #FFFFFF; --tile-alt: #F6F6F6; --ink: #222222; --muted: #7E8082; --soft: #B1B3B5; --accent: #0CEFD3; --accent-ink: #000000; --accent-text: #000000; --link: #222222; --chip: #000000; --chip-ink: #FFFFFF; --hairline: #E6E6E6; }
+html[data-brand="baemin"][data-theme="dark"] { --bg: #000000; --bg-alt: #111111; --tile: #1A1A1A; --tile-alt: #111111; --ink: #FFFFFF; --muted: #B1B3B5; --soft: #7E8082; --accent: #0CEFD3; --accent-ink: #000000; --accent-text: #0CEFD3; --link: #0CEFD3; --chip: #333333; --chip-ink: #FFFFFF; --hairline: #4D4D4D; }
+html[data-brand="baemin"][data-theme="light"] .accent { background: var(--accent); padding: 0 .12em; }
+
+/* ── 토스: 파랑은 행동에만, 둥근 앱 카드, 옅은 청회색 그림자 ── */
+html[data-brand="toss"] { --font: "Pretendard", sans-serif; --w-d: 700; --ls-d: -0.01em; --lh-d: 1.15; --r-tile: 44px; --r-btn: 16px; --r-chip: 999px; --shadow: 0 0 4px rgba(2,32,71,.05), 0 4px 16px rgba(2,32,71,.05); }
+html[data-brand="toss"][data-theme="light"] { --bg: #FFFFFF; --bg-alt: #F2F4F6; --tile: #F2F4F6; --tile-alt: #E8F3FF; --ink: #191F28; --muted: #4E5968; --soft: #8B95A1; --accent: #3182F6; --accent-ink: #FFFFFF; --accent-text: #3182F6; --link: #3182F6; --chip: #E8F3FF; --chip-ink: #1B64DA; --hairline: #E5E8EB; }
+html[data-brand="toss"][data-theme="dark"] { --bg: #202027; --bg-alt: #2C2C35; --tile: #2C2C35; --tile-alt: #202C4D; --ink: #FFFFFF; --muted: #C3C3C6; --soft: #9E9EA4; --accent: #3485FA; --accent-ink: #FFFFFF; --accent-text: #61B0FF; --link: #61B0FF; --chip: #23386A; --chip-ink: #8FCDFF; --hairline: #3C3C47; --shadow: none; }
+
+/* ── 당근: 하얀 생활 유틸리티에 주황 핀 하나, 그림자 없음 ── */
+html[data-brand="daangn"] { --font: "Pretendard", sans-serif; --w-d: 700; --ls-d: -0.01em; --lh-d: 1.2; --r-tile: 24px; --r-btn: 12px; --r-chip: 999px; }
+html[data-brand="daangn"][data-theme="light"] { --bg: #FFFFFF; --bg-alt: #F3F4F5; --tile: #F7F8F9; --tile-alt: #FFF2EC; --ink: #1A1C20; --muted: #555D6D; --soft: #868B94; --accent: #FF6600; --accent-ink: #FFFFFF; --accent-text: #FF6600; --link: #E14D00; --chip: #EEEFF1; --chip-ink: #1A1C20; --hairline: #DCDEE3; }
+html[data-brand="daangn"][data-theme="dark"] { --bg: #16171B; --bg-alt: #1D2025; --tile: #1D2025; --tile-alt: #2B2E35; --ink: #F3F4F5; --muted: #B0B3BA; --soft: #868B94; --accent: #FF6600; --accent-ink: #FFFFFF; --accent-text: #FF7A1F; --link: #FF9E65; --chip: #2B2E35; --chip-ink: #E9EAEC; --hairline: #393D46; }
+
+/* ── 카카오: 노랑은 버튼 하나에만, 자간 좁은 묵직한 헤드라인 ── */
+html[data-brand="kakaocorp"] { --font: "Pretendard", sans-serif; --w-d: 800; --ls-d: -0.033em; --lh-d: 1.18; --r-tile: 48px; --r-btn: 999px; --r-chip: 999px; --shadow: 4px 12px 40px 6px rgba(0,0,0,.09); }
+html[data-brand="kakaocorp"][data-theme="light"] { --bg: #FFFFFF; --bg-alt: #F9F9F9; --tile: #FFFFFF; --tile-alt: #F9F9F9; --ink: #333333; --muted: #666666; --soft: #888888; --accent: #FFCD00; --accent-ink: #000000; --accent-text: #000000; --link: #2439DF; --chip: #F2F2F2; --chip-ink: #333333; --hairline: #E5E5E5; }
+html[data-brand="kakaocorp"][data-theme="dark"] { --bg: #121212; --bg-alt: #1E1E1E; --tile: #2F2F2F; --tile-alt: #1E1E1E; --ink: #FFFFFF; --muted: #A1A1A1; --soft: #8E8E8E; --accent: #FEE500; --accent-ink: #000000; --accent-text: #FEE500; --link: #489FF8; --chip: #3A3A3A; --chip-ink: #FEE500; --hairline: #333333; --shadow: none; }
+html[data-brand="kakaocorp"][data-theme="light"] .accent { background: linear-gradient(transparent 58%, #FFCD00 58%); }
+html[data-brand="kakaocorp"][data-theme="light"] .btn { box-shadow: inset 0 0 0 2px #000; }
+
+/* ── 넷플릭스: 검은 극장, 빨간 버튼 하나, 각진 모서리 ── */
+html[data-brand="netflix"] { --font: "Noto Sans KR", sans-serif; --w-d: 900; --ls-d: -0.01em; --lh-d: 1.08; --r-tile: 4px; --r-btn: 8px; --r-chip: 4px; }
+html[data-brand="netflix"][data-theme="light"] { --bg: #F5F5F1; --bg-alt: #FFFFFF; --tile: #EAEAEA; --tile-alt: #DCDCDC; --ink: #141414; --muted: #4D4D4D; --soft: #808080; --accent: #E50914; --accent-ink: #FFFFFF; --accent-text: #E50914; --link: #B20710; --chip: #141414; --chip-ink: #FFFFFF; --hairline: #D2D2D2; }
+html[data-brand="netflix"][data-theme="dark"] { --bg: #000000; --bg-alt: #161616; --tile: #2D2D2D; --tile-alt: #161616; --ink: #FFFFFF; --muted: #B3B3B3; --soft: #808080; --accent: #E50914; --accent-ink: #FFFFFF; --accent-text: #FF3D47; --link: #FFFFFF; --chip: #414141; --chip-ink: #FFFFFF; --hairline: #232323; }
+html[data-brand="netflix"][data-theme="dark"] .slide { background: radial-gradient(ellipse 90% 70% at 75% 110%, #461518 0%, #210E17 45%, transparent 75%), radial-gradient(ellipse 70% 60% at 0% 0%, #192247 0%, transparent 60%), #000; }
+
+/* ── 스포티파이: 무광 검정 위 초록 하나, 굵은 타이틀 ── */
+html[data-brand="spotify"] { --font: "Pretendard", sans-serif; --w-d: 900; --ls-d: -0.02em; --lh-d: 1.05; --r-tile: 48px; --r-btn: 999px; --r-chip: 999px; }
+html[data-brand="spotify"][data-theme="light"] { --bg: #FFFFFF; --bg-alt: #F6F6F6; --tile: #F0F0F0; --tile-alt: #96F0B6; --ink: #000000; --muted: #6A6A6A; --soft: #919496; --accent: #1ED760; --accent-ink: #000000; --accent-text: #1ABC54; --link: #117A37; --chip: #000000; --chip-ink: #FFFFFF; --hairline: #E0E0E0; }
+html[data-brand="spotify"][data-theme="dark"] { --bg: #000000; --bg-alt: #121212; --tile: #1F1F1F; --tile-alt: #2A2A2A; --ink: #FFFFFF; --muted: #B3B3B3; --soft: #919496; --accent: #1ED760; --accent-ink: #000000; --accent-text: #1ED760; --link: #1ED760; --chip: #FFFFFF; --chip-ink: #000000; --hairline: #343434; }
+html[data-brand="spotify"] .btn { transition: transform .2s, background .2s; }
+html[data-brand="spotify"] .btn:hover { transform: scale(1.04); }
+
+/* ── 레고: 흰 베이스플레이트, 파랑 행동, 노랑 배지 ── */
+html[data-brand="lego"] { --font: "Noto Sans KR", sans-serif; --w-d: 900; --ls-d: 0em; --lh-d: 1.1; --r-tile: 32px; --r-btn: 999px; --r-chip: 999px; }
+html[data-brand="lego"][data-theme="light"] { --bg: #FFFFFF; --bg-alt: #F7F7F7; --tile: #F2F2F2; --tile-alt: #E5F2FF; --ink: #141414; --muted: #636363; --soft: #939393; --accent: #005AD2; --accent-ink: #FFFFFF; --accent-text: #005AD2; --link: #005AD2; --chip: #FFD502; --chip-ink: #000000; --hairline: #E5E5E5; }
+html[data-brand="lego"][data-theme="dark"] { --bg: #141414; --bg-alt: #242424; --tile: #22242D; --tile-alt: #011C58; --ink: #FFFFFF; --muted: #CBCBCB; --soft: #939393; --accent: #005AD2; --accent-ink: #FFFFFF; --accent-text: #0DADE4; --link: #0DADE4; --chip: #FFD502; --chip-ink: #000000; --hairline: #3D3D3D; }
+html[data-brand="lego"] .sc-chip { background: var(--chip); color: var(--chip-ink); border-radius: 14px; }
+
+/* ── 이솝: 크림 양피지, 사각 라벨, 세리프, 그림자 없음 ── */
+html[data-brand="aesop"] { --font: "IBM Plex Sans KR", sans-serif; --font-d: "Gowun Batang", serif; --w-d: 400; --ls-d: 0em; --lh-d: 1.25; --r-tile: 0px; --r-btn: 0px; --r-chip: 0px; }
+html[data-brand="aesop"][data-theme="light"] { --bg: #FFFEF2; --bg-alt: #EBEADE; --tile: #F6F5E8; --tile-alt: #EBEADE; --ink: #333333; --muted: #666666; --soft: #999999; --accent: #333333; --accent-ink: #FFFEF2; --accent-text: #CA432F; --link: #000000; --chip: #EBEADE; --chip-ink: #333333; --hairline: #D5D5CB; }
+html[data-brand="aesop"][data-theme="dark"] { --bg: #1F1D19; --bg-alt: #2A2722; --tile: #33302A; --tile-alt: #2A2722; --ink: #FFFEF2; --muted: #D5D5CB; --soft: #999999; --accent: #FFFEF2; --accent-ink: #333333; --accent-text: #E0775F; --link: #EBEADE; --chip: #3D3A33; --chip-ink: #FFFEF2; --hairline: #4A463E; }
+html[data-brand="aesop"] .btn { background: transparent; color: var(--ink); box-shadow: inset 0 0 0 1px currentColor; }
+html[data-brand="aesop"] .btn::after { content: "→"; }
+html[data-brand="aesop"] .btn:hover { background: var(--tile-alt); }
+
+/* ── 포르쉐: 무채색 쇼룸, 빨강 없음 ── */
+html[data-brand="porsche"] { --font: "IBM Plex Sans KR", sans-serif; --w-d: 700; --ls-d: -0.01em; --lh-d: 1.15; --r-tile: 16px; --r-btn: 16px; --r-chip: 8px; }
+html[data-brand="porsche"][data-theme="light"] { --bg: #FFFFFF; --bg-alt: #EEEEEE; --tile: #EEEFF2; --tile-alt: #FFFFFF; --ink: #000000; --muted: #555555; --soft: #B0B0B6; --accent: #0E0E12; --accent-ink: #FFFFFF; --accent-text: #555555; --link: #000000; --chip: #FFFFFF; --chip-ink: #000000; --hairline: #D5D5DA; }
+html[data-brand="porsche"][data-theme="dark"] { --bg: #0E0E12; --bg-alt: #0E1418; --tile: #1A1A24; --tile-alt: #0E0E12; --ink: #FFFFFF; --muted: #9F9FA0; --soft: #555555; --accent: #FFFFFF; --accent-ink: #0E0E12; --accent-text: #9F9FA0; --link: #FFFFFF; --chip: #2E2E38; --chip-ink: #FFFFFF; --hairline: #2E2E38; }
+
+/* ── 맥킨지: 딥블루 매거진, 가는 세리프 헤드라인, 각진 카드 ── */
+html[data-brand="mckinsey"] { --font: "Noto Sans KR", sans-serif; --font-d: "Nanum Myeongjo", serif; --w-d: 400; --ls-d: -0.01em; --lh-d: 1.15; --r-tile: 0px; --r-btn: 0px; --r-chip: 0px; }
+html[data-brand="mckinsey"][data-theme="light"] { --bg: #FFFFFF; --bg-alt: #FAFAFA; --tile: #F0F0F0; --tile-alt: #FFFFFF; --ink: #000000; --muted: #757575; --soft: #B3B3B3; --accent: #2251FF; --accent-ink: #FFFFFF; --accent-text: #2251FF; --link: #2251FF; --chip: #FFFFFF; --chip-ink: #051C2C; --hairline: #D0D0D0; }
+html[data-brand="mckinsey"][data-theme="dark"] { --bg: #051C2C; --bg-alt: #031119; --tile: #082644; --tile-alt: #031119; --ink: #FFFFFF; --muted: #B3B3B3; --soft: #757575; --accent: #00A9F4; --accent-ink: #000000; --accent-text: #00A9F4; --link: #6E9DFF; --chip: #103559; --chip-ink: #FFFFFF; --hairline: #2B5580; }
+html[data-brand="mckinsey"] .sc-chip { background: none; color: var(--ink); padding: 8px 0; font-size: 24px; text-transform: uppercase; letter-spacing: .14em; }
+/* 세리프 브랜드는 따옴표도 제목 글꼴로 */
+html[data-brand="aesop"] .sc-q::before, html[data-brand="aesop"] .sc-q::after, html[data-brand="mckinsey"] .sc-q::before, html[data-brand="mckinsey"] .sc-q::after { font-family: var(--font-d); font-weight: 700; }
+/* 강조색이 밝은 다크 브랜드는 막대 '전' 색을 더 어둡게 */
+html[data-brand="aesop"][data-theme="dark"], html[data-brand="porsche"][data-theme="dark"] { --bar-pre: var(--soft); }
+
+* { box-sizing: border-box; }
+html, body { margin: 0; height: 100%; overflow: hidden; }
+body { font-family: var(--font); background: var(--bg); color: var(--ink); -webkit-font-smoothing: antialiased; transition: background .3s; }
+
+/* 목차 사이드바: Apple localnav처럼 작고 조용하게 */
+#side {
+  position: fixed; top: 0; left: 0; bottom: 0; width: var(--side-w);
+  background: var(--side); border-right: 1px solid var(--hairline);
+  display: flex; flex-direction: column; padding: 20px 12px; z-index: 20;
+  transition: transform .3s ease, background .3s;
+}
+body.no-side #side { transform: translateX(-100%); }
+.side-head { display: flex; align-items: center; justify-content: space-between; padding: 0 8px 16px; }
+.side-head b { font-size: 12px; font-weight: 600; color: var(--soft); letter-spacing: .02em; }
+#toc { list-style: none; margin: 0; padding: 0; flex: 1 1 0; min-height: 0; overflow-y: auto; }
+#toc button {
+  width: 100%; display: flex; gap: 12px; align-items: baseline; text-align: left;
+  padding: 11px 12px; border: 0; border-radius: 10px; background: none; cursor: pointer;
+  font: 400 15px/1.35 var(--font); color: var(--muted);
+}
+#toc button:hover { background: var(--side-hover); }
+#toc button .n { font-size: 12px; color: var(--soft); width: 18px; flex: none; }
+#toc button.on { color: var(--ink); font-weight: 600; }
+#toc button.on .n { color: var(--accent-text); }
+/* 묶음 목차: data-group이 있으면 묶음 제목만 보이고, 지금 장이 든 묶음만 펼친다 */
+#toc ol { list-style: none; margin: 0; padding: 0 0 6px 8px; display: none; }
+#toc .grp.open > ol { display: block; }
+#toc .gh { justify-content: space-between; align-items: center; font-weight: 600; color: var(--ink); }
+#toc .grp.open > .gh { color: var(--accent-text); }
+#toc .gc { font-size: 12px; font-weight: 400; color: var(--soft); }
+#toc ol button { padding: 7px 12px; font-size: 14px; }
+#toc .grp-head { font-weight: 600; color: var(--ink); }
+#toc .grp-head .cnt { margin-left: auto; font-size: 12px; font-weight: 400; color: var(--soft); }
+#toc .grp-head .cnt::after { content: ' ›'; display: inline-block; transition: transform .2s; }
+#toc li.open > .grp-head .cnt::after { transform: rotate(90deg); }
+#toc .grp-items { list-style: none; margin: 0 0 6px; padding: 0 0 0 12px; display: none; }
+#toc li.open > .grp-items { display: block; }
+#toc .grp-items button { padding: 7px 12px; font-size: 14px; }
+.icon-btn {
+  width: 32px; height: 32px; border: 0; border-radius: 999px; background: var(--pill);
+  color: var(--ink); cursor: pointer; font-size: 15px; line-height: 1; display: grid; place-items: center;
+}
+#theme { margin: 12px 8px 4px; display: flex; background: var(--pill); border-radius: 999px; padding: 3px; }
+#theme button { flex: 1; border: 0; border-radius: 999px; padding: 8px 0; background: none; cursor: pointer; font: 400 13px/1 var(--font); color: var(--muted); }
+#theme button.on { background: var(--bg); color: var(--ink); font-weight: 600; }
+#brand { margin: 10px 8px 0; display: flex; flex-wrap: wrap; gap: 5px; }
+#brand button { border: 0; border-radius: 999px; padding: 7px 10px; background: var(--pill); cursor: pointer; font: 400 12px/1 var(--font); color: var(--muted); }
+#brand button.on { background: var(--ink); color: var(--bg); font-weight: 600; }
+.keys { margin: 10px 8px 0; font-size: 11px; color: var(--soft); line-height: 1.6; }
+#open-side { position: fixed; top: 16px; left: 16px; z-index: 15; opacity: 0; pointer-events: none; transition: opacity .3s; }
+body.no-side #open-side { opacity: 1; pointer-events: auto; }
+
+/* 브랜드를 바꾸면 위에 이름이 잠깐 뜬다 */
+#toast {
+  position: fixed; top: 24px; left: calc(50% + var(--side-w) / 2); transform: translateX(-50%);
+  padding: 10px 22px; border-radius: 999px; background: var(--ink); color: var(--bg);
+  font: 600 15px/1 var(--font); z-index: 30; opacity: 0; pointer-events: none; transition: opacity .3s, left .3s;
+}
+#toast.show { opacity: 1; }
+body.no-side #toast { left: 50%; }
+
+/* 무대: 사이드바 오른쪽 영역에 맞춰 scale */
+#view { position: fixed; top: 0; right: 0; bottom: 0; left: var(--side-w); transition: left .3s ease; }
+body.no-side #view { left: 0; }
+#stage { position: absolute; left: 50%; top: 50%; width: 1920px; height: 1080px; transform-origin: center; }
+.slide {
+  position: absolute; inset: 0; background: var(--bg);
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  text-align: center; padding: 120px 160px;
+  opacity: 0; visibility: hidden; transition: opacity .5s ease, visibility .5s, background .3s;
+}
+.slide.on { opacity: 1; visibility: visible; }
+.accent { color: var(--accent-text); }
+
+/* ════ 성찰회 배치 (sc-) ════
+   한 장에 하나. 왼쪽 위 같은 자리에 칩 + 큰 제목, 그 아래 본문 영역(y 300~970).
+   <section class="slide sc 패턴"> <div class="sc-head"><span class="sc-chip">CHAPTER 01</span><h2 class="sc-title">제목</h2></div> <div class="sc-body">…</div> </section> */
+.slide.sc { display: block; padding: 0; text-align: left; }
+.sc-head { position: absolute; left: 88px; top: 60px; width: 1744px; height: 210px; z-index: 3; pointer-events: none; }
+.sc-chip { display: inline-block; padding: 8px 26px; border-radius: var(--r-chip); background: var(--accent); color: var(--accent-ink); font: 700 28px/1.2 var(--font); letter-spacing: .04em; }
+.sc-title {
+  position: absolute; left: 0; top: 90px; margin: 0; max-width: 1744px;
+  font-family: var(--font-d); font-weight: var(--w-d); letter-spacing: var(--ls-d); font-size: 100px; line-height: 1.2;
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+}
+/* 본문: 아래 110px은 점 내비 자리 */
+.sc-body { position: absolute; top: 300px; bottom: 110px; left: 88px; right: 88px; z-index: 1; display: flex; align-items: center; justify-content: center; }
+
+/* 그림: 그림자·모서리·테두리 없음. 기본은 영역 안에 다 보이게(contain)
+   img.crop → 채워 자르기(object-position은 인라인) · img.ink → 흑백 선 그림, 다크에서 뒤집기 · img.plate → 밝은 배경이 붙은 그림, 다크에서 연한 판 위에 */
+figure.sc-fig { margin: 0; position: relative; min-width: 0; min-height: 0; display: flex; align-items: center; justify-content: center; }
+figure.sc-fig > img { display: block; width: 100%; height: 100%; object-fit: contain; }
+figure.sc-fig > img.crop { object-fit: cover; }
+html[data-theme="dark"] .sc-fig > img.ink { filter: invert(1); }
+html[data-theme="dark"] .sc-fig > img.plate { width: auto; height: auto; max-width: 100%; max-height: 100%; background: #F2F2F2; border-radius: calc(var(--r-tile) / 2); padding: 24px; }
+/* 그림 설명: <figure class="sc-fig"><img><figcaption>…</figcaption></figure> */
+figure.sc-fig:has(> figcaption) { flex-direction: column; }
+figure.sc-fig:has(> figcaption) > img { height: auto; flex: 1 1 0; min-height: 0; }
+.sc-fig > figcaption { flex: none; margin-top: 16px; font: 400 30px/1.3 var(--font); color: var(--muted); text-align: center; }
+/* 출처·주석 한 줄: 막대·표·카드 장의 .sc-body 맨 끝에 <p class="sc-note"> */
+.sc-body:has(> .sc-note) { flex-direction: column; gap: 16px; }
+.sc-note { margin: 0; align-self: stretch; font: 400 24px/1.4 var(--font); color: var(--muted); text-align: left; }
+
+/* 1. 표지: 왼쪽 글, 오른쪽 강조색 원, 아래 메타 3칸 */
+.sc-cover-main { position: absolute; left: 132px; right: 100px; top: 200px; height: 560px; display: flex; align-items: center; justify-content: space-between; gap: 60px; }
+.sc-cover-text { min-width: 0; word-break: keep-all; }
+.sc-kicker { display: inline-block; margin: 0 0 36px; transform: rotate(-4deg); transform-origin: left bottom; font-family: var(--font-d); font-weight: var(--w-d); letter-spacing: var(--ls-d); font-size: 78px; line-height: 1.2; }
+.sc-big { margin: 0; font-family: var(--font-d); font-weight: var(--w-d); letter-spacing: var(--ls-d); font-size: 118px; line-height: 1.25; }
+.sc-sub { margin: 28px 0 0; font-family: var(--font-d); font-weight: var(--w-d); letter-spacing: var(--ls-d); font-size: 60px; line-height: 1.3; color: var(--ink); }
+.sc-dot { flex: none; width: 560px; height: 560px; border-radius: 50%; background: var(--accent); color: var(--accent-ink); display: grid; place-items: center; font-family: var(--font-d); font-weight: var(--w-d); letter-spacing: var(--ls-d); font-size: 150px; line-height: 1; }
+.sc-meta { position: absolute; left: 132px; bottom: 160px; display: flex; gap: 64px; margin: 0; padding: 0; list-style: none; }
+.sc-meta li { display: flex; align-items: center; gap: 18px; font: 700 26px/1.3 var(--font); white-space: nowrap; }
+
+/* 2. 그림 1장: 본문 영역 안에서 최대 */
+.sc-pic .sc-fig { width: 100%; height: 100%; }
+
+/* 3. 그림 2장(이상): 위아래 선 맞춤. 그림마다 style="--ar:가로/세로" (기본 4/3) */
+.sc-pic2 .sc-body { gap: 48px; }
+.sc-pic2 .sc-fig { flex: var(--ar, 1.3333) 1 0; aspect-ratio: var(--ar, 1.3333); max-height: 100%; }
+
+/* 4. 전면 그림: 무대 전체. 머리 없이는 section에 sc-nohead를 붙이고 sc-head를 뺀다 */
+.sc-full > .sc-fig { position: absolute; inset: 0; z-index: 0; }
+.sc-full > .sc-fig > img { object-fit: cover; }
+.sc-full:not(.sc-nohead) > .sc-fig::after { content: ""; position: absolute; left: 0; right: 0; top: 0; height: 420px; background: linear-gradient(color-mix(in srgb, var(--bg) 82%, transparent), transparent); }
+
+/* 5. 인용: 따옴표는 글 상자 기준이라 줄 수가 바뀌어도 균형 유지 */
+.sc-q { position: relative; margin: 0; max-width: 1240px; text-align: center; word-break: keep-all; font-family: var(--font-d); font-weight: var(--w-d); letter-spacing: var(--ls-d); font-size: 100px; line-height: 1.3; }
+.sc-q::before, .sc-q::after { position: absolute; color: var(--accent); font: 900 220px/1 "Noto Sans KR", var(--font); letter-spacing: 0; }
+.sc-q::before { content: "\201C"; right: 100%; margin-right: 48px; top: -36px; }
+.sc-q::after { content: "\201D"; left: 100%; margin-left: 48px; bottom: -100px; }
+
+/* 6. 키워드 3열 */
+.sc-cols3 .sc-body { display: grid; grid-template-columns: repeat(3, 1fr); gap: 48px; align-items: center; }
+.sc-cols3 .sc-body > * { margin: 0; text-align: center; word-break: keep-all; font-family: var(--font-d); font-weight: var(--w-d); letter-spacing: var(--ls-d); font-size: 100px; line-height: 1.2; }
+.sc-cols3 .sc-body small { display: block; margin-top: 20px; font: 400 36px/1.4 var(--font); letter-spacing: 0; color: var(--muted); }
+
+/* 7. 대비: 큰 문장 한 줄 + 아래 2열 단어와 가운데 화살표 */
+.sc-versus .sc-body { flex-direction: column; gap: 72px; }
+.sc-vs-line { margin: 0; white-space: nowrap; font-family: var(--font-d); font-weight: var(--w-d); letter-spacing: var(--ls-d); font-size: 150px; line-height: 1.2; }
+.sc-vs-rows { display: grid; grid-template-columns: 1fr auto 1fr; column-gap: 72px; row-gap: 24px; align-items: center; width: 100%; max-width: 1400px; }
+.sc-vs-rows > * { margin: 0; font-family: var(--font-d); font-weight: var(--w-d); letter-spacing: var(--ls-d); font-size: 80px; line-height: 1.2; white-space: nowrap; }
+.sc-vs-rows > :nth-child(3n+1) { text-align: right; color: var(--muted); }
+.sc-vs-rows > :nth-child(3n) { text-align: left; }
+.sc-arrow { color: var(--accent-text); }
+
+/* 8. 그림 + 이름·값 */
+.sc-kv .sc-body { display: grid; grid-template-columns: 1fr 1fr; gap: 96px; align-items: center; }
+.sc-kv .sc-fig { height: 100%; }
+.sc-dl { display: grid; grid-template-columns: auto 1fr; column-gap: 64px; row-gap: 28px; margin: 0; font-family: var(--font-d); font-weight: var(--w-d); letter-spacing: var(--ls-d); font-size: 80px; line-height: 1.25; }
+.sc-dl dt { color: var(--muted); }
+.sc-dl dt { white-space: nowrap; }
+.sc-dl dd { margin: 0; word-break: keep-all; }
+
+/* 9. 막대: 값 style="--v:3.9", 최대 --max(기본 5)는 section이나 .sc-chart에 */
+.sc-bars .sc-body { flex-direction: column; align-items: stretch; gap: 16px; }
+.sc-legend { display: flex; justify-content: flex-end; gap: 40px; margin: 0; font: 400 28px/1.2 var(--font); color: var(--muted); }
+.sc-legend i { display: inline-block; width: 24px; height: 24px; margin-right: 12px; border-radius: 6px; vertical-align: -3px; background: var(--accent); }
+.sc-legend i.pre { background: var(--bar-pre, var(--muted)); }
+.sc-chart { flex: 1; min-height: 0; display: flex; justify-content: center; gap: 64px; }
+.sc-item { flex: 1; max-width: 460px; min-height: 0; display: flex; flex-direction: column; align-items: center; }
+.sc-pair { flex: 1; min-height: 0; width: 100%; padding-top: 56px; display: flex; justify-content: center; align-items: flex-end; gap: 24px; border-bottom: 2px solid var(--hairline); }
+.sc-bar { position: relative; width: 120px; height: calc(var(--v) / var(--max, 5) * 100%); border-radius: calc(var(--r-tile) / 4) calc(var(--r-tile) / 4) 0 0; background: var(--accent); }
+.sc-bar.pre { background: var(--bar-pre, var(--muted)); }
+.sc-bar > span { position: absolute; left: 50%; bottom: 100%; transform: translateX(-50%); padding-bottom: 10px; font: 700 36px/1 var(--font); color: var(--ink); white-space: nowrap; }
+.sc-name { margin: 20px 0 0; font-family: var(--font-d); font-weight: var(--w-d); letter-spacing: var(--ls-d); font-size: 44px; line-height: 1.2; white-space: nowrap; }
+.sc-delta { margin: 6px 0 0; font: 700 32px/1.2 var(--font); color: var(--accent-text); }
+
+/* 10. 쌓기: 아무 장에서나 [data-step]은 다음 키를 누를 때마다 하나씩 보인다 */
+.slide [data-step] { opacity: 0; transition: opacity .4s ease; }
+.slide [data-step].shown { opacity: 1; }
+
+/* ── 남긴 틀: 목록 카드 · 표 · 실습 (sc-body 안에 넣는다) ── */
+.tile { background: var(--tile); border-radius: var(--r-tile); box-shadow: var(--shadow); padding: 64px 56px; text-align: left; transition: background .3s; }
+.tile h3 { font-family: var(--font-d); font-weight: var(--w-d); letter-spacing: var(--ls-d); font-size: 56px; margin: 0 0 8px; }
+.tile .cap { font-size: 30px; color: var(--muted); margin: 0 0 48px; }
+.chip { font-size: 30px; padding: 14px 24px; border-radius: var(--r-chip); background: var(--chip); color: var(--chip-ink); white-space: nowrap; }
+.btn {
+  display: inline-flex; align-items: center; gap: 12px;
+  min-height: 80px; padding: 20px 44px; border: 0; border-radius: var(--r-btn);
+  background: var(--accent); color: var(--accent-ink); font: 400 32px/1.17 var(--font); cursor: pointer; transition: background .2s, filter .2s;
+}
+.btn:hover { filter: brightness(1.08); }
+
+/* 목록 카드 3장 (find-place 결과 같은 순위·후보) */
+.cards3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; width: 100%; }
+.cards3 .tile { padding: 52px 48px; }
+.cards3 .rank { font-size: 28px; font-weight: 600; color: var(--accent-text); margin: 0 0 20px; }
+.cards3 .cap { margin: 0 0 28px; }
+.cards3 .meta { font-size: 26px; line-height: 1.5; color: var(--muted); margin: 0; }
+.cards3 a, .table a { color: var(--link); text-decoration: none; }
+
+/* 표 */
+.table { width: 100%; border-collapse: collapse; font-size: 32px; text-align: left; }
+.table th { font-size: 26px; font-weight: 600; color: var(--muted); padding: 0 28px 20px; border-bottom: 2px solid var(--hairline); }
+.table td { padding: 28px; border-bottom: 1px solid var(--hairline); }
+.table tr.pick td { background: var(--tile); font-weight: 600; }
+.table tr.pick td:first-child { color: var(--accent-text); }
+/* 성찰회 배치(큰 제목) 안에서는 카드·표 글씨를 키운다 */
+.sc .cards3 .tile { padding: 60px 56px; }
+.sc .cards3 h3 { font-size: 72px; }
+.sc .cards3 .cap { font-size: 40px; }
+.sc .cards3 .rank { font-size: 40px; }
+.sc .cards3 .meta { font-size: 32px; }
+.sc .table { font-size: 44px; }
+.sc .table th { font-size: 32px; }
+
+/* 아래 점 내비 */
+#nav { position: fixed; bottom: 28px; left: calc(50% + var(--side-w) / 2); transform: translateX(-50%); display: flex; gap: 14px; padding: 14px 20px; border-radius: 999px; background: var(--pill); backdrop-filter: blur(20px); z-index: 10; transition: left .3s ease; }
+body.no-side #nav { left: 50%; }
+#nav button { width: 10px; height: 10px; padding: 0; border: 0; border-radius: 999px; background: var(--dot); cursor: pointer; transition: width .3s, background .3s; }
+#nav button.on { width: 36px; background: var(--dot-on); }
+/* 열 때는 전환 애니메이션 없이 (목차 닫힌 채 열 때 무대가 작게 잡히던 문제) */
+html.preload *, html.preload *::before, html.preload *::after { transition: none !important; }
+
+/* ── 이 덱에서 보탠 배치 (v2, 2026-11-18 조립) — 아이콘 없음, 사진·캡처 + 글 ── */
+/* 번호 목록 · 출처 줄 (SE4A 덱과 같은 모양) */
+.sc-list { margin: 0; padding: 0; list-style: none; counter-reset: n; display: flex; flex-direction: column; gap: 36px; width: 100%; max-width: 1500px; }
+.sc-list li { counter-increment: n; display: flex; align-items: center; gap: 40px; word-break: keep-all; font-family: var(--font-d); font-weight: var(--w-d); letter-spacing: var(--ls-d); font-size: 64px; line-height: 1.25; }
+.sc-list li::before { content: counter(n); flex: none; width: 96px; height: 96px; border-radius: 50%; background: var(--accent); color: var(--accent-ink); display: grid; place-items: center; font-size: 52px; }
+.sc-list li small { margin-left: auto; padding-left: 24px; font: 400 40px/1.2 var(--font); color: var(--muted); white-space: nowrap; }
+.sc-body:has(> .sc-list) { flex-direction: column; gap: 40px; }
+.sc-src { margin: 0; width: 100%; padding: 16px 28px; border-left: 10px solid var(--accent); background: color-mix(in srgb, var(--accent) 14%, transparent); font: 700 30px/1.4 var(--font); word-break: keep-all; text-align: left; flex: none; }
+.sc-src a { color: var(--link); text-decoration: none; }
+/* 줄글 */
+.sc-lines { margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 32px; min-width: 0; }
+.sc-lines li { padding: 4px 0 4px 32px; border-left: 10px solid var(--accent); font: 500 50px/1.35 var(--font); word-break: keep-all; text-align: left; }
+.sc-lines li b { font-weight: 900; }
+.sc-lines li small { margin-left: 12px; font-size: 32px; color: var(--muted); }
+.sc-lines.sm li { font-size: 40px; }
+.sc-lines.lines-row { width: 100%; gap: 18px; flex: none; }
+.sc-lines .big { font-family: var(--font-d); font-weight: var(--w-d); font-size: 96px; line-height: 1; background: linear-gradient(transparent 62%, var(--accent) 62%); padding: 0 .08em; }
+.sc-lines.why { width: 100%; gap: 44px; flex: 1; justify-content: center; }
+/* 본문 묶음 */
+.sc-body.split { justify-content: space-between; gap: 72px; }
+.sc-body.stack { flex-direction: column; gap: 32px; }
+.sc-body.stack > .grow { flex: 1 1 0; min-height: 0; width: 100%; }
+.sc-body > .row, .sc-body.stack > .row { display: flex; gap: 40px; justify-content: center; align-items: center; flex: 1 1 0; min-height: 0; width: 100%; }
+.row > .sc-fig { height: 100%; max-width: 100%; flex: 0 1 auto; }
+.row > .sc-fig > img { height: 100%; }
+.sc-fig > img.crop { border-radius: calc(var(--r-tile) / 1.5); }
+img.scr { filter: drop-shadow(0 0 1px rgba(0,0,0,.45)) drop-shadow(0 10px 24px rgba(0,0,0,.12)); }
+.sc-fig.crop-top > img { object-fit: cover; object-position: top; }
+.ar::before { content: "\2192"; font: 400 96px/1 var(--font); color: var(--accent-text); }
+.ar { flex: none; }
+.sc-pic2 .sc-body > .ar { flex: none; }
+.pic-line { margin: 0; font-family: var(--font-d); font-weight: var(--w-d); letter-spacing: var(--ls-d); font-size: 96px; line-height: 1.25; word-break: keep-all; }
+.sc-body.pic-text { gap: 96px; }
+.sc-body.pic-text > .sc-fig { height: 100%; flex: none; }
+.one-line { margin: 0; flex: none; text-align: center; font-family: var(--font-d); font-weight: var(--w-d); letter-spacing: var(--ls-d); font-size: 64px; line-height: 1.2; }
+.example { margin: 0; flex: none; padding: 24px 48px; border-radius: var(--r-tile); background: var(--tile); font: 700 42px/1.4 var(--font); text-align: center; word-break: keep-all; }
+/* 표지 */
+.cv-pic { flex: none; width: 680px; height: 510px; }
+.cv-kicker { font-size: 44px; transform: rotate(-3deg); margin-bottom: 40px; }
+.cv-big { font-size: 112px; }
+.cv-sub { font-size: 48px; color: var(--muted); }
+.sc-meta li { font-size: 30px; font-weight: 700; }
+/* 저는요: 배너(저해상도라 작게) + 봉사 사진 2장 */
+.me-pics { flex: none; height: 100%; display: flex; gap: 28px; align-items: center; }
+.me-col { height: 100%; display: flex; flex-direction: column; gap: 24px; }
+.me-col > .sc-fig { flex: 1 1 0; min-height: 0; aspect-ratio: 4/3; }
+.me-col > .sc-fig > img { height: 100%; }
+/* 교재 표지 4장 */
+.covers { display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; flex: 1 1 0; min-height: 0; width: 100%; }
+.covers .sc-fig { height: 100%; }
+.covers figcaption { font: 700 30px/1.3 var(--font); color: var(--ink); }
+.covers figcaption span { font-weight: 400; font-size: 26px; color: var(--muted); }
+/* 세 사례 흐름 */
+.flow-pics { display: grid; grid-template-columns: 1fr auto 1fr auto 1fr; gap: 32px; align-items: center; width: 100%; height: 100%; }
+.flow-pics .sc-fig > img { aspect-ratio: 4/3; height: auto; width: 100%; flex: none; }
+.flow-pics figcaption { margin-top: 28px; font-family: var(--font-d); font-weight: var(--w-d); letter-spacing: var(--ls-d); font-size: 72px; line-height: 1.15; color: var(--ink); }
+.flow-pics figcaption span { font-size: 52px; color: var(--muted); }
+/* 컵 광고 6장 */
+.ads { display: grid; grid-template-columns: repeat(6, 1fr); gap: 28px; width: 100%; align-items: center; }
+.ads > img { width: 100%; aspect-ratio: 0.707; object-fit: cover; display: block; border-radius: 10px; }
+/* PPT 장 2×2 */
+.grid22 { display: grid; grid-template-columns: repeat(2, 572px); grid-template-rows: repeat(2, 322px); gap: 26px; }
+.grid22 > img { width: 100%; height: 100%; object-fit: contain; display: block; }
+/* 신경 쓸 점 옆 활동지 */
+.side-pic { height: 100%; flex: none; }
+/* 두 칸 비교 */
+.duo { display: grid; grid-template-columns: 1fr auto 1fr; gap: 56px; align-items: stretch; width: 100%; max-width: 1560px; }
+.duo .tile { padding: 72px 48px; text-align: center; display: flex; flex-direction: column; justify-content: center; gap: 28px; }
+.duo .tile b { font-family: var(--font-d); font-weight: var(--w-d); letter-spacing: var(--ls-d); font-size: 110px; line-height: 1.15; }
+.duo .tile span { font: 500 52px/1.4 var(--font); color: var(--muted); word-break: keep-all; }
+.duo .tile.key { background: var(--accent); color: var(--accent-ink); }
+.duo .tile.key span { color: var(--accent-ink); opacity: .8; }
+.duo .vs { margin: 0; align-self: center; font-family: var(--font-d); font-size: 80px; color: var(--muted); }
+.duo.ip .tile { padding: 56px 40px; }
+.duo.ip .tile b { font-size: 96px; }
+.sc-versus .sc-body { flex-direction: column; gap: 64px; }
+.steps3 { font-size: 128px; }
+.vs-sub { margin: 0; font: 500 48px/1.4 var(--font); color: var(--muted); text-align: center; word-break: keep-all; }
+.sc-q.q-sm { font-size: 80px; max-width: 1500px; }
+/* 실습 단계 (ACE 실습 페이지 grid2 모양을 1920×1080 무대에 맞춤): 왼쪽 번호 단계 tile + 오른쪽 캡처 */
+.lab { display: grid; grid-template-columns: 720px minmax(0, 1fr); gap: 56px; width: 100%; height: 100%; align-items: center; text-align: left; }
+.lab-steps { margin: 0; padding: 0; list-style: none; counter-reset: s; display: flex; flex-direction: column; gap: 20px; }
+.lab-step { counter-increment: s; display: grid; grid-template-columns: 76px minmax(0, 1fr); gap: 26px; align-items: center; padding: 26px 30px; border-radius: var(--r-tile); background: var(--tile); font: 500 38px/1.4 var(--font); word-break: keep-all; }
+.lab-step::before { content: counter(s); width: 76px; height: 76px; border-radius: 50%; background: var(--accent); color: var(--accent-ink); display: grid; place-items: center; font: 700 40px/1 var(--font); }
+.lab-step b { font-weight: 900; }
+.lab-step small { display: block; margin-top: 6px; font-size: 32px; color: var(--muted); }
+figure.shot { margin: 0; position: relative; min-width: 0; min-height: 0; height: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; }
+figure.shot > img { display: block; max-width: 100%; max-height: 100%; min-height: 0; width: auto; height: auto; border-radius: 16px; box-shadow: 0 0 0 1px var(--hairline), 0 14px 40px rgba(0,0,0,.14); }
+figure.shot > figcaption { margin-top: 18px; font: 400 30px/1.3 var(--font); color: var(--muted); }
+figure.shot.crop-top { height: auto; width: 100%; display: block; }
+figure.shot.crop-top > img { width: 100%; height: 100%; max-height: none; object-fit: cover; object-position: top; }
+/* 캡처 2장: 큰 화면 위에 다음 화면을 겹쳐 보인다 */
+figure.shot.pip { display: block; height: auto; width: 100%; aspect-ratio: 1.6; }
+figure.shot.pip > img.main { position: absolute; left: 0; top: 0; width: 80%; max-height: none; }
+figure.shot.pip > img.inset { position: absolute; right: 0; bottom: 0; width: 54%; max-height: none; box-shadow: 0 0 0 1px var(--hairline), 0 18px 50px rgba(0,0,0,.28); }
+.lab-right { display: flex; flex-direction: column; gap: 28px; min-width: 0; }
+.qr-row { display: flex; align-items: center; gap: 36px; }
+img.qr { display: block; background: #fff; padding: 14px; border-radius: 18px; box-shadow: 0 0 0 1px var(--hairline); }
+.qr-row img.qr { width: 220px; height: 220px; flex: none; }
+.qr-row p { margin: 0; font: 700 38px/1.3 var(--font); }
+.qr-row a { color: var(--ink); text-decoration: none; }
+.qr-row small { display: block; margin-top: 10px; font: 400 32px/1.3 var(--font); color: var(--muted); }
+/* 안 될 때: 가로로 긴 캡처 위, 단계 2×2 아래 */
+.lab.wide { grid-template-columns: 1fr; grid-template-rows: auto auto; gap: 36px; align-content: center; }
+.lab.wide > figure.shot { height: auto; }
+.lab.wide .lab-steps { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+/* 성공 상자 */
+.ok-box { padding: 56px 48px; border-radius: var(--r-tile); background: var(--tile); box-shadow: inset 0 0 0 6px var(--accent); }
+.ok-box h3 { margin: 0 0 40px; font-family: var(--font-d); font-weight: var(--w-d); letter-spacing: var(--ls-d); font-size: 72px; line-height: 1.2; }
+/* 자료 받기 목록 (ACE .file 모양) */
+.files { display: flex; flex-direction: column; flex: 1 1 0; min-width: 0; }
+.file { display: flex; align-items: center; gap: 28px; padding: 14px 0; border-top: 1px solid var(--hairline); text-decoration: none; color: var(--ink); }
+.file:first-child { border-top: 0; }
+.file:hover .name { text-decoration: underline; }
+.file .ext { width: 104px; height: 64px; border-radius: 14px; background: var(--accent); color: var(--accent-ink); display: grid; place-items: center; font: 700 26px/1 var(--font); flex: none; }
+.file .name { display: block; font: 700 34px/1.3 var(--font); word-break: keep-all; }
+.file .sub { display: block; font: 400 26px/1.3 var(--font); color: var(--muted); }
+.deck-qr { flex: none; width: 460px; }
+.deck-qr img.qr { width: 420px; height: 420px; flex: none; }
+.deck-qr figcaption { margin-top: 24px; font: 700 30px/1.35 var(--font); color: var(--ink); word-break: keep-all; }
+.sc-body.split:has(> .sc-list) { flex-direction: row; }
+.sc-body.split > .sc-list { flex: 1 1 0; }
+.me-banner { height: 330px; width: 180px; flex: none; }
+.me-col { width: 430px; flex: none; }
+.me-col > .sc-fig { flex: none; width: 430px; height: 323px; }
+.sc-meta { gap: 0; }
+.sc-meta li + li::before { content: "·"; margin: 0 32px; color: var(--soft); }
+.file { padding: 9px 0; }
+.file .ext { height: 56px; }
+.file .name { font-size: 31px; }
+.file .sub { font-size: 28px; }
+/* v4 (2026-11-18 검증 지적 반영): 그림 크게 · 세로 자료는 가로로 잘라 크게 */
+#nav { opacity: 0; transition: opacity .3s, left .3s ease; }
+#nav:hover { opacity: 1; }
+.sc-cover .sc-cover-main { right: 980px; }
+.sc-cover .cv-kicker { font-size: 40px; }
+.sc-cover .sc-meta { flex-wrap: wrap; max-width: 820px; row-gap: 10px; }
+.cv-pic.full { position: absolute; top: 0; right: 0; width: 900px; height: 1080px; margin: 0; }
+.cv-pic.full > img { height: 100%; }
+.me-row { display: flex; gap: 40px; justify-content: center; flex: 1 1 0; min-height: 0; width: 100%; }
+.me-row > .sc-fig { height: 100%; aspect-ratio: 4/3; flex: none; }
+.me-row > .sc-fig > img { height: 100%; }
+.side-full { position: absolute; top: 0; right: 0; width: 810px; height: 1080px; margin: 0; z-index: 2; }
+.side-full > img { height: 100%; object-fit: cover; }
+.sc-body.left-of-side { right: 900px; justify-content: flex-start; }
+.ads3 { display: grid; grid-template-columns: repeat(3, auto); gap: 48px; justify-content: center; flex: 1 1 0; min-height: 0; width: 100%; }
+.ads3 > img { height: 100%; aspect-ratio: 0.707; object-fit: cover; display: block; border-radius: 12px; }
+.tip-split { display: grid; grid-template-columns: minmax(0, 1fr) 820px; gap: 64px; align-items: center; width: 100%; height: 100%; }
+.tip-split .sc-list li { font-size: 54px; }
+.tip-split .sc-fig { height: 100%; }
+.pair-rows { display: grid; grid-template-columns: 520px 1080px; grid-template-rows: 1fr 1fr; gap: 28px 56px; width: 100%; height: 100%; align-items: center; justify-content: center; }
+.pair-rows .lbl { margin: 0; font-family: var(--font-d); font-weight: var(--w-d); letter-spacing: var(--ls-d); font-size: 60px; line-height: 1.2; word-break: keep-all; }
+.pair-rows .lbl small { display: block; margin-top: 10px; font: 400 34px/1.3 var(--font); color: var(--muted); }
+.pair-rows .sc-fig { height: 100%; }
+.lab { grid-template-columns: 600px minmax(0, 1fr); gap: 48px; }
+.lab-step { font-size: 36px; padding: 22px 26px; }
+.lab.wide.big .lab-steps { gap: 28px; }
+.lab.wide.big .lab-step { font-size: 46px; padding: 40px 36px; min-height: 230px; }
+.ads4 { display: grid; grid-template-columns: repeat(4, auto); gap: 40px; justify-content: center; height: 100%; width: 100%; }
+.ads4 > img { height: 100%; aspect-ratio: 0.707; object-fit: cover; display: block; border-radius: 12px; }
+.tip-split.wide-pic { grid-template-columns: minmax(0, 1fr) 940px; }
+.big-steps { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; width: 100%; margin: 0; padding: 0; list-style: none; counter-reset: s; }
+.big-steps .lab-step { font-size: 50px; padding: 44px 40px; min-height: 250px; }
+.file .sub { font-size: 28px; }
+.ads4 > img { height: 560px; }
+.sc-fig.side-full { position: absolute; top: 0; right: 0; width: 810px; height: 1080px; }
+.sc-cover .sc-meta li { font-size: 27px; }
+.sc-cover .sc-meta li + li::before { margin: 0 22px; }
+.lab > figure.shot:not(.crop-top) > img { width: 100%; height: 100%; max-height: 670px; object-fit: contain; border-radius: 0; box-shadow: none; filter: drop-shadow(0 0 1px rgba(0,0,0,.45)) drop-shadow(0 12px 28px rgba(0,0,0,.14)); }
+.lab > figure.shot:has(> figcaption) > img { height: auto; flex: 1 1 0; min-height: 0; }
+/* v5 (심사 1바퀴): 목차 순서 장 · 실습 캡처 크게 · 세로 자료 가로로 잘라 크게 */
+.agenda { margin: 0; padding: 0; list-style: none; width: 100%; max-width: 1500px; display: flex; flex-direction: column; }
+.agenda li { display: grid; grid-template-columns: minmax(0, 1fr) 190px 150px; gap: 40px; align-items: center; height: 108px; border-bottom: 2px solid var(--hairline); }
+.agenda li:last-child { border-bottom: 0; }
+.agenda li > span:first-child { font-family: var(--font-d); font-weight: var(--w-d); letter-spacing: var(--ls-d); font-size: 60px; line-height: 1.2; white-space: nowrap; }
+.agenda em { font: 400 34px/1 var(--font); font-style: normal; color: var(--muted); margin-left: 20px; letter-spacing: 0; }
+.agenda img { width: 190px; height: 92px; object-fit: cover; border-radius: 12px; display: block; }
+.agenda small { font: 700 40px/1 var(--font); color: var(--muted); text-align: right; }
+.cap-sm { margin: 0; flex: none; text-align: center; font: 400 30px/1.3 var(--font); color: var(--muted); }
+.lab { grid-template-columns: 640px minmax(0, 1fr); }
+.lab-steps { gap: 24px; }
+.lab-step { font-size: 38px; font-weight: 700; padding: 24px 26px; }
+.lab-step small { font-weight: 400; font-size: 28px; word-break: break-all; }
+.lab-steps .qr-row { margin-top: 12px; gap: 24px; }
+.lab-steps .qr-row img.qr { width: 170px; height: 170px; }
+.lab-steps .qr-row p { font-size: 28px; }
+.lab-steps .qr-row small { font-size: 26px; }
+.lab > figure.shot { height: 100%; }
+.lab > figure.shot:not(.crop-top) > img { max-height: 670px; }
+.shots-col { display: flex; flex-direction: column; gap: 28px; height: 100%; min-width: 0; align-items: center; justify-content: center; }
+.shots-col > img { display: block; flex: 1 1 0; min-height: 0; max-width: 100%; width: 100%; object-fit: contain; filter: drop-shadow(0 0 1px rgba(0,0,0,.45)) drop-shadow(0 12px 28px rgba(0,0,0,.14)); }
+.shots-row { display: flex; gap: 56px; height: 100%; min-width: 0; justify-content: center; align-items: stretch; }
+.shots-row > figure { margin: 0; display: flex; flex-direction: column; align-items: center; min-height: 0; }
+.shots-row > figure > img { flex: 1 1 0; min-height: 0; height: 100%; width: auto; max-width: 100%; object-fit: contain; filter: drop-shadow(0 0 1px rgba(0,0,0,.45)) drop-shadow(0 12px 28px rgba(0,0,0,.14)); }
+.shots-row > figure > figcaption { flex: none; margin-top: 14px; font: 700 34px/1.2 var(--font); }
+.ok-lab { grid-template-columns: 640px minmax(0, 1fr); }
+.ok-lab .sc-lines.sm li { font-size: 44px; }
+.photo3 { display: grid; grid-template-columns: auto auto; grid-template-rows: 1fr 1fr; gap: 28px; flex: 1 1 0; min-height: 0; justify-content: center; }
+.photo3 > .sc-fig { aspect-ratio: 4/3; height: 100%; min-height: 0; }
+.photo3 > .sc-fig.big { grid-row: 1 / 3; }
+.photo3 > .sc-fig > img { height: 100%; }
+.sc-body.pic-text > .sc-fig { height: 100%; flex: 0 1 auto; }
+.stack-rows { display: grid; grid-template-columns: 300px minmax(0, 1fr); grid-template-rows: minmax(0, 1fr) minmax(0, 1fr); gap: 28px 40px; width: 100%; height: 100%; align-items: center; }
+.stack-rows .lbl-sm { margin: 0; font-family: var(--font-d); font-weight: var(--w-d); font-size: 52px; line-height: 1.2; text-align: right; word-break: keep-all; }
+.stack-rows .lbl-sm small { display: block; margin-top: 8px; font: 400 28px/1.3 var(--font); color: var(--muted); }
+.stack-rows .sc-fig { min-height: 0; height: 100%; }
+#toc ol li.sub { padding: 10px 12px 2px; font-size: 12px; font-weight: 600; color: var(--soft); letter-spacing: .02em; }
+/* v6 (심사 2바퀴): 실습 캡처 크게 · 세로 자료 가로로 잘라 크게 · 시간 바로잡기 */
+.sc-cover .cv-kicker { transform: none; margin-bottom: 32px; }
+.agenda { max-width: 1560px; }
+.agenda li { grid-template-columns: minmax(0, 1fr) 170px; height: 100px; }
+.agenda li > span:first-child { font-size: 66px; }
+.agenda em { font-size: 36px; }
+.agenda em b { font-weight: 700; color: var(--ink); }
+.agenda small { font-size: 46px; color: var(--ink); }
+.sc-lines.why { gap: 30px; }
+.sc-lines.why li { font-size: 46px; }
+.sc-lines.why .big { font-size: 124px; }
+.sc-src.one { padding: 10px 22px; font: 400 21px/1.3 var(--font); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.lab { grid-template-columns: 520px minmax(0, 1fr); gap: 48px; }
+.ok-lab { grid-template-columns: 520px minmax(0, 1fr); }
+.lab-step { font-size: 36px; }
+.lab-ok { margin-top: 8px; padding: 22px 26px; border-radius: var(--r-tile); box-shadow: inset 0 0 0 5px var(--accent); font: 700 34px/1.35 var(--font); word-break: keep-all; }
+.shots-stack { display: flex; flex-direction: column; gap: 24px; align-items: center; justify-content: center; height: 100%; min-width: 0; }
+.shots-stack > img, .shots-pair > img, .bars3 img { display: block; height: auto; max-width: 100%; filter: drop-shadow(0 0 1px rgba(0,0,0,.45)) drop-shadow(0 12px 28px rgba(0,0,0,.14)); }
+.shots-pair { display: flex; align-items: center; justify-content: center; gap: 28px; height: 100%; min-width: 0; }
+.shots-pair .ar::before { font-size: 80px; }
+.lab.top { grid-template-columns: 1fr; grid-template-rows: auto minmax(0, 1fr); gap: 40px; align-items: stretch; }
+.lab.top .lab-steps { flex-direction: row; gap: 24px; }
+.lab.top .lab-step { flex: 1 1 0; }
+.bars3 { display: flex; gap: 32px; justify-content: center; align-items: flex-start; min-height: 0; }
+.bars3 figure { margin: 0; display: flex; flex-direction: column; align-items: center; }
+.bars3 figcaption { margin-top: 14px; font: 400 30px/1.3 var(--font); color: var(--muted); }
+.tip2 { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; width: 100%; height: 100%; align-items: stretch; }
+.tip2 .tile { padding: 52px 52px; display: flex; flex-direction: column; justify-content: center; gap: 36px; }
+.tip2 h3 { margin: 0; font-size: 64px; }
+.tip2 p { margin: 0; font: 500 44px/1.4 var(--font); word-break: keep-all; }
+.tip2 p small { display: block; margin-top: 12px; font-size: 32px; color: var(--muted); }
+.tip2 img { display: block; width: 100%; height: auto; filter: drop-shadow(0 0 1px rgba(0,0,0,.45)) drop-shadow(0 10px 24px rgba(0,0,0,.12)); }
+.pic-side { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 80px; align-items: center; width: 100%; height: 100%; }
+.pic-side > .sc-fig { height: 100%; }
+.pic-side .sc-lines li { font-size: 46px; }
+.lead-line { margin: 0; flex: none; font-family: var(--font-d); font-weight: var(--w-d); letter-spacing: var(--ls-d); font-size: 60px; line-height: 1.2; text-align: center; word-break: keep-all; }
+.lead-line small { font: 400 38px/1 var(--font); color: var(--muted); letter-spacing: 0; margin-left: 16px; }
+.example small { display: block; margin-bottom: 6px; font: 400 26px/1.2 var(--font); color: var(--muted); }
+.tip-list { margin: 0; padding: 0; list-style: none; counter-reset: n; display: flex; flex-direction: column; gap: 40px; }
+.tip-list li { counter-increment: n; display: grid; grid-template-columns: 84px minmax(0, 1fr); gap: 28px; align-items: start; font-family: var(--font-d); font-weight: var(--w-d); letter-spacing: var(--ls-d); font-size: 58px; line-height: 1.25; word-break: keep-all; }
+.tip-list li::before { content: counter(n); width: 84px; height: 84px; border-radius: 50%; background: var(--accent); color: var(--accent-ink); display: grid; place-items: center; font-size: 46px; }
+.tip-list li small { display: block; margin-top: 10px; font: 400 32px/1.35 var(--font); color: var(--muted); letter-spacing: 0; }
+/* 마지막 장 */
+.sc-body.end { top: 0; bottom: 0; flex-direction: column; gap: 48px; }
+.end-big { margin: 0; font-family: var(--font-d); font-weight: var(--w-d); letter-spacing: var(--ls-d); font-size: 220px; line-height: 1.1; }
+.end-sub { margin: 0; font: 500 48px/1.3 var(--font); color: var(--muted); }
+/* v7 (심사 3바퀴): 목차 스크롤 · 실습 단계 칸 넓힘 · 지도서·캡처 자르기 크게 */
+#theme, #brand, .keys, .side-head { flex: none; }
+#toc button { padding: 9px 12px; }
+#toc ol button { padding: 6px 12px; }
+#toc ol li.sub { padding: 6px 12px 0; }
+.lab { grid-template-columns: 640px minmax(0, 1fr); }
+.lab-step small.url { white-space: nowrap; word-break: normal; font-size: 24px; }
+.sc-body.left-of-side { flex-direction: column; align-items: stretch; justify-content: center; gap: 28px; }
+.flow40 li { height: 110px; }
+.flow40 li > span:first-child { font-size: 64px; }
+.photo3 figcaption { position: absolute; left: 16px; bottom: 16px; margin: 0; padding: 6px 18px; border-radius: 10px; background: rgba(0,0,0,.62); color: #fff; font: 700 30px/1.3 var(--font); }
+.ip-col { flex: none; width: 500px; display: flex; flex-direction: column; gap: 32px; }
+.ip-col .tile { padding: 40px 40px; display: flex; flex-direction: column; gap: 14px; }
+.ip-col .tile b { font-family: var(--font-d); font-weight: var(--w-d); letter-spacing: var(--ls-d); font-size: 64px; line-height: 1.15; }
+.ip-col .tile span { font: 500 36px/1.35 var(--font); color: var(--muted); word-break: keep-all; }
+.sc-body.ip2 { gap: 64px; }
+.pair2 { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; width: 100%; flex: 1 1 0; min-height: 0; }
+.pair2 > .sc-fig { height: 100%; }
+.one-bar img { width: 900px; }
+.lab.top .lab-ok { align-self: center; margin-top: 0; }
+.tip-list.sm li { font-size: 52px; }
+/* 자료 받기 2×3 카드 (위: 수업 zip, 아래: 자료집 링크) */
+.dl-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); grid-template-rows: repeat(2, minmax(0, 1fr)); gap: 32px; width: 100%; height: 100%; }
+.dl-card { position: relative; display: flex; flex-direction: column; gap: 10px; min-width: 0; min-height: 0; padding: 32px 40px; border-radius: var(--r-tile); background: var(--tile); color: var(--ink); text-decoration: none; box-shadow: var(--shadow), 0 0 0 1px var(--hairline); overflow: hidden; word-break: keep-all; transition: transform .15s; }
+.dl-card:hover { transform: translateY(-4px); }
+.dl-card:hover .dl-title { text-decoration: underline; text-underline-offset: 6px; }
+.dl-top { display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+.dl-kind { display: inline-block; padding: 6px 20px; border-radius: var(--r-chip); font: 700 24px/1.2 var(--font); letter-spacing: .04em; background: var(--chip); color: var(--chip-ink); }
+.dl-zip .dl-kind { background: var(--accent); color: var(--accent-ink); }
+.dl-size { font: 700 26px/1 var(--font); color: var(--muted); font-variant-numeric: tabular-nums; }
+.dl-title { margin-top: 8px; font-family: var(--font-d); font-weight: var(--w-d); letter-spacing: var(--ls-d); font-size: 54px; line-height: 1.15; }
+.dl-title small { display: block; margin-top: 4px; font-size: 38px; color: var(--muted); }
+.dl-sub { font: 400 28px/1.35 var(--font); color: var(--muted); }
+.dl-sub .nw { white-space: nowrap; }
+.dl-go { margin-top: auto; font: 700 28px/1.2 var(--font); color: var(--accent-text); }
+.dl-link { padding-right: 210px; }
+.dl-cover { position: absolute; right: 36px; top: 50%; transform: translateY(-50%); width: 150px; height: 212px; object-fit: cover; border-radius: 10px; box-shadow: 0 0 0 1px var(--hairline), 0 8px 20px rgba(0,0,0,.12); }
+/* 배포판: 수정 메모 칸 숨김 (말할 거리·발표자 창은 남김) */
+#notes { grid-template-columns: 1fr !important; }
+#notes > .nt-col:last-child { display: none !important; }
+</style>
+</head>
+<body>
+
+<aside id="side">
+  <div class="side-head">
+    <b>목차</b>
+    <button class="icon-btn" id="close-side" title="목차 숨기기 (T)">‹</button>
+  </div>
+  <ol id="toc"></ol>
+  <div id="theme">
+    <button data-theme="light">☀ 낮</button>
+    <button data-theme="dark">☾ 다크</button>
+  </div>
+  <div id="brand"></div>
+  <p class="keys">← → 넘기기 · T 목차 · D 모드 · M 테마 · F 전체 화면</p>
+</aside>
+<button class="icon-btn" id="open-side" title="목차 열기 (T)">☰</button>
+<div id="toast"></div>
+
+<div id="view"><div id="stage">
+
+  <section class="slide sc sc-cover" data-id="s01" data-title="표지">
+    <div class="sc-cover-main">
+      <div class="sc-cover-text">
+        <p class="sc-kicker cv-kicker">2026 학교로 찾아가는 과학발명교실 연수</p>
+        <h1 class="sc-big cv-big">디지털과 연계한<br><span class="accent">발명 수업</span></h1>
+        <p class="sc-sub cv-sub">실습 · 자료</p>
+      </div>
+    </div>
+    <figure class="sc-fig cv-pic full"><img class="crop" style="object-position:50% 50%;border-radius:0" alt="전구" src="img/cover-bulb.jpg"></figure>
+    <ul class="sc-meta">
+      <li>인천시교육청 발명교육지원단 · 양상경 (인천효성남초)</li>
+    </ul>
+    <div class="talk" hidden><ul><li>연수에서 쓴 실습 화면과 수업 자료를 모아 둔 페이지입니다.</li><li>← → 키나 화면 아래 점으로 넘기고, T를 누르면 목차가 열립니다.</li><li>마지막 쪽 「자료 받기」에서 수업별 자료를 내려받을 수 있습니다.</li></ul></div>
+  </section>
+
+  <section class="slide sc" data-id="s32" data-title="발명 주사위">
+    <div class="sc-head"><span class="sc-chip">실습 · 발명 주사위</span><h2 class="sc-title">발명 주사위</h2></div>
+    <div class="sc-body">
+      <div class="lab">
+        <ol class="lab-steps">
+          <li class="lab-step"><span>주제 고르기</span></li>
+          <li class="lab-step"><span>「주사위 굴리기」</span></li>
+          <li class="lab-step"><span>질문에 답하기</span></li>
+          <li class="qr-row"><img class="qr" alt="발명 주사위 주소 QR" src="img/qr-dice-gh.png"><p><a href="https://skyang9838-hue.github.io/invention-dice/" target="_blank" style="font-size:.62em;word-break:break-all">skyang9838-hue.github.io/invention-dice</a><small>로그인 필요 없음</small></p></li>
+        </ol>
+        <figure class="shot"><img alt="발명 주사위 안내판: 우산 + 빼기와 질문 '우산에서 무엇을 빼면 더 편해질까?'" src="img/crop-dice-v3.jpg"></figure>
+      </div>
+    </div>
+    <div class="talk" hidden><ul><li>QR을 찍거나 주소로 들어가 주세요. 로그인은 필요 없습니다.</li><li>주제를 고르고 「주사위 굴리기」를 누르면 공항 안내판처럼 글자판이 넘어가면서 물건 하나와 기법 하나가 나옵니다. 그 아래에 "우산에서 무엇을 빼면 더 편해질까?" 같은 질문이 크게 나옵니다. 양옆의 「물건만 다시」·「기법만 다시」로 한쪽만 바꿀 수도 있습니다.</li><li>교실 TV로 띄울 때는 오른쪽 위 버튼으로 전체 화면을 켜고, 스페이스 키로 굴리면 됩니다. 숫자 1·2는 물건만·기법만 다시입니다. 소리는 스피커 버튼으로 끌 수 있습니다.</li><li>기법은 인천시교육청 2024 「차근차근 배우는 발명이야기」의 '발명 10계명' 가운데 더하기·빼기·모양 바꾸기·반대로 하기·용도 바꾸기 다섯 가지입니다.</li><li>이 웹앱은 아이디어를 대신 내 주지 않습니다. 생각의 출발점만 던져 줍니다.</li><li>두세 번 굴려 보시고, 떠오른 아이디어를 옆 선생님께 한 문장으로 말해 보세요.</li></ul></div>
+  </section>
+
+  <section class="slide sc" data-id="s34" data-title="준비">
+    <div class="sc-head"><span class="sc-chip">실습 · 직접 만들기</span><h2 class="sc-title">준비</h2></div>
+    <div class="sc-body">
+      <div class="lab">
+        <ol class="lab-steps">
+          <li class="lab-step"><span>한 사람에 노트북 한 대<small>없으면 제 노트북으로 돌아가며</small></span></li>
+          <li class="lab-step"><span>크롬 브라우저로 열기</span></li>
+          <li class="lab-step"><span>노트북 카메라 덮개 열기</span></li>
+          <li class="lab-step"><span><b>웃음·놀람·찡그림</b> 만들기</span></li>
+        </ol>
+        <figure class="shot"><img alt="우리 반 노트북 크롬에서 연 티처블머신 (가림본)" src="img/crop-7403-laptop.jpg"><figcaption>우리 반 노트북 · 크롬에서 연 티처블머신 (11/17, 가림)</figcaption></figure>
+      </div>
+    </div>
+    <div class="talk" hidden><ul><li>시간이 되면 직접 만들어 보겠습니다. 시간이 모자라면 이 부분은 건너뜁니다.</li><li>노트북이 있으시면 한 분에 한 대, 없으시면 제 노트북으로 돌아가며 해 보세요. 크롬으로 열고, 카메라 덮개가 닫혀 있지 않은지 봐 주세요.</li><li>수업 PPT는 짝 둘이 노트북 한 대로 짜 두었습니다.</li><li>전체 6단계, 10분 남짓 걸립니다.</li></ul></div>
+  </section>
+
+  <section class="slide sc" data-id="s35" data-title="1단계 사이트 열기">
+    <div class="sc-head"><span class="sc-chip">실습 · 직접 만들기</span><h2 class="sc-title">1단계 사이트 열기</h2></div>
+    <div class="sc-body">
+      <div class="lab">
+        <ol class="lab-steps">
+          <li class="lab-step"><span>주소 입력<small class="url">teachablemachine.withgoogle.com</small></span></li>
+          <li class="lab-step"><span>「시작하기」 누르기</span></li>
+        </ol>
+        <figure class="shot"><img alt="티처블머신 첫 화면, 2번: 시작하기 버튼" src="img/s2-01.jpg"></figure>
+      </div>
+    </div>
+    <div class="talk" hidden><ul><li>주소창에 teachablemachine.withgoogle.com을 치시거나, 검색창에 '티처블머신'을 치셔도 됩니다.</li><li>화면 아래 영어 쿠키 안내가 뜨면 「OK, got it」을 누르고, 파란 「시작하기」를 누릅니다. 로그인은 필요 없습니다.</li></ul></div>
+  </section>
+
+  <section class="slide sc" data-id="s36" data-title="2단계 프로젝트 고르기">
+    <div class="sc-head"><span class="sc-chip">실습 · 직접 만들기</span><h2 class="sc-title">2단계 프로젝트 고르기</h2></div>
+    <div class="sc-body">
+      <div class="lab">
+        <ol class="lab-steps">
+          <li class="lab-step"><span>「이미지 프로젝트」</span></li>
+          <li class="lab-step"><span>「표준 이미지 모델」</span></li>
+        </ol>
+        <div class="shots-stack">
+          <img alt="1번: 이미지 프로젝트" src="img/s2-02a.jpg" style="width:920px">
+          <img alt="2번: 표준 이미지 모델" src="img/s2-02b.jpg" style="width:920px">
+        </div>
+      </div>
+    </div>
+    <div class="talk" hidden><ul><li>세 가지 프로젝트 가운데 맨 왼쪽 「이미지 프로젝트」를 누릅니다.</li><li>창이 뜨면 「표준 이미지 모델」을 고릅니다.</li><li>강아지·고양이 구분도, 표정 인식기도 모두 이 이미지 프로젝트로 만듭니다.</li></ul></div>
+  </section>
+
+  <section class="slide sc" data-id="s37" data-title="3단계 이름 붙이기">
+    <div class="sc-head"><span class="sc-chip">실습 · 직접 만들기</span><h2 class="sc-title">3단계 이름 붙이기</h2></div>
+    <div class="sc-body">
+      <div class="lab">
+        <ol class="lab-steps">
+          <li class="lab-step"><span>연필 → <b>웃음</b></span></li>
+          <li class="lab-step"><span>연필 → <b>놀람</b></span></li>
+          <li class="lab-step"><span>「클래스 추가」 → <b>찡그림</b></span></li>
+        </ol>
+        <div class="shots-stack">
+          <img alt="클래스 이름 바꾸기: 1 웃음, 2 놀람" src="img/s2-03a.jpg" style="width:980px">
+          <img alt="3 클래스 추가" src="img/s2-03b.jpg" style="width:980px">
+        </div>
+      </div>
+    </div>
+    <div class="talk" hidden><ul><li>「1. 샘플 수집」 안내 창이 뜨면 오른쪽 위 X로 닫습니다.</li><li>클래스는 AI가 나눌 칸입니다. 처음엔 두 칸이 있습니다. 「Class 1」 옆 연필을 눌러 '웃음', 「Class 2」는 '놀람'으로 바꿉니다.</li><li>아래 「클래스 추가」를 눌러 세 번째 칸을 만들고 '찡그림'이라고 붙입니다.</li></ul></div>
+  </section>
+
+  <section class="slide sc" data-id="s38" data-title="4단계 표정 찍기">
+    <div class="sc-head"><span class="sc-chip">실습 · 직접 만들기</span><h2 class="sc-title">4단계 표정 찍기</h2></div>
+    <div class="sc-body">
+      <div class="lab">
+        <ol class="lab-steps">
+          <li class="lab-step"><span>「웹캠」 → 허용</span></li>
+          <li class="lab-step"><span>「길게 눌러서 녹화하기」<small>30장 넘게</small></span></li>
+          <li class="lab-step"><span>놀람 · 찡그림도 똑같이</span></li>
+        </ol>
+        <div class="shots-stack">
+          <img alt="1번: 웃음 칸의 웹캠 버튼" src="img/crop-tm-card-webcam.jpg" style="width:1000px">
+          <img alt="2번: 길게 눌러서 녹화하기 버튼" src="img/crop-tm-rec.jpg" style="width:760px">
+        </div>
+      </div>
+    </div>
+    <div class="talk" hidden><ul><li>웃음 칸의 「웹캠」 → 「방문할 때마다 허용」.</li><li>웃는 얼굴로 「길게 눌러서 녹화하기」를 꾹 눌러 30장 넘게 찍습니다.</li><li>놀람·찡그림도 똑같이 합니다.</li></ul></div>
+  </section>
+
+  <section class="slide sc" data-id="s39" data-title="5단계 학습시키기">
+    <div class="sc-head"><span class="sc-chip">실습 · 직접 만들기</span><h2 class="sc-title">5단계 학습시키기</h2></div>
+    <div class="sc-body">
+      <div class="lab">
+        <ol class="lab-steps">
+          <li class="lab-step"><span>「모델 학습시키기」</span></li>
+          <li class="lab-step"><span>끝날 때까지 탭 그대로</span></li>
+        </ol>
+        <figure class="shot"><img alt="1번: 모델 학습 중, 2번: 탭을 전환하지 마세요 안내" src="img/s2-05.jpg"></figure>
+      </div>
+    </div>
+    <div class="talk" hidden><ul><li>가운데 「모델 학습시키기」를 누릅니다.</li><li>학습하는 동안 다른 탭으로 넘어가면 학습이 멈출 수 있으니, 끝날 때까지 이 화면에 그대로 두세요. 화면 위에도 "탭을 전환하지 마세요"라고 뜹니다.</li><li>캡처의 초록 화면은 제가 캡처할 때 쓴 시험용 카메라 화면입니다.</li></ul></div>
+  </section>
+
+  <section class="slide sc" data-id="s40" data-title="6단계 시험하기">
+    <div class="sc-head"><span class="sc-chip">실습 · 직접 만들기</span><h2 class="sc-title">6단계 시험하기</h2></div>
+    <div class="sc-body">
+      <div class="lab top">
+        <ol class="lab-steps">
+          <li class="lab-step"><span>미리보기에서 표정 바꾸기</span></li>
+          <li class="lab-step"><span>출력 막대 1등 보기</span></li>
+          <li class="lab-step"><span>옆 선생님 얼굴로 시험</span></li>
+        </ol>
+        <div class="bars3">
+          <figure><img alt="출력 막대: 웃음 칸이 가장 김" src="img/s2-bar-smile.jpg" style="width:556px"></figure>
+          <figure><img alt="출력 막대: 놀람 칸이 가장 김" src="img/s2-bar-surprise.jpg" style="width:556px"></figure>
+          <figure><img alt="출력 막대: 찡그림 칸이 가장 김" src="img/s2-bar-frown.jpg" style="width:556px"></figure>
+        </div>
+        <p class="lab-ok">막대 1등이 표정을 따라 바뀌면 성공</p>
+      </div>
+    </div>
+    <div class="talk" hidden><ul><li>학습이 끝나면 오른쪽 「미리보기」에 웹캠 화면이 뜹니다. 표정을 바꾸면 웃음·놀람·찡그림 막대가 바뀝니다.</li><li>막대 1등이 표정을 따라 바뀌면 성공입니다.</li><li>이번엔 옆 선생님 얼굴로 시험해 보세요. 다른 사람 얼굴에서는 틀리기도 합니다. "왜 그럴까?"가 아이들과 나눌 질문입니다. AI는 배운 것만 압니다.</li><li>수업 PPT에는 짝 얼굴로 바꿔 시험하는 단계를 넣어 두었습니다.</li></ul></div>
+  </section>
+
+  <section class="slide sc" data-id="s41" data-title="문제 해결">
+    <div class="sc-head"><span class="sc-chip">실습 · 직접 만들기</span><h2 class="sc-title">문제 해결</h2></div>
+    <div class="sc-body">
+      <div class="lab">
+        <ol class="lab-steps">
+          <li class="lab-step"><span>「허용 안함」을 눌렀다면<small>주소창 왼쪽 아이콘 → 카메라 허용 → F5</small></span></li>
+          <li class="lab-step"><span>까만 화면이면<small>카메라 쓰는 탭·프로그램 닫고 F5</small></span></li>
+          <li class="lab-step"><span>카메라 가림 덮개 확인</span></li>
+        </ol>
+        <figure class="shot"><img alt="웹캠 칸의 오류 문구: 웹캠을 여는 중에 오류가 발생했습니다. 권한을 사용 설정했는지 확인하세요" src="img/crop-tm-cam-error.jpg"><figcaption>카메라가 막혔을 때 웹캠 칸 (크롬 실제 화면)</figcaption></figure>
+      </div>
+    </div>
+    <div class="talk" hidden><ul><li>「허용 안함」을 누르면 웹캠 칸에 이런 오류 문구가 뜹니다. 주소창 왼쪽 아이콘에서 카메라를 허용하고 새로고침(F5)하면 됩니다.</li><li>줌이나 카메라 앱처럼 카메라를 쓰고 있는 프로그램이 있으면 닫고 새로고침합니다.</li><li>웨일·엣지도 똑같이 주소창 왼쪽 아이콘에서 카메라를 허용하면 됩니다.</li></ul></div>
+  </section>
+
+  <section class="slide sc" data-id="s43" data-title="발명교육 자료집">
+    <div class="sc-head"><span class="sc-chip">마무리</span><h2 class="sc-title">발명교육 자료집</h2></div>
+    <div class="sc-body stack">
+      <p class="one-line" style="font-size:52px">인천시교육청 간행물 '발명' 검색 <span class="accent">16건</span>, 로그인 없이 받음</p>
+      <div class="pair2">
+        <figure class="sc-fig"><img class="scr" alt="인천시교육청 간행물 게시판에서 발명으로 검색한 결과: 전체 16건" src="img/crop-ice-search16.jpg"><figcaption>인천시교육청 온라인기록관 · 인천교육자료(간행물)</figcaption></figure>
+        <figure class="sc-fig"><img class="scr" alt="발명교육포털 발명교육자료 카드 3개" src="img/crop-portal-cards.jpg"><figcaption>발명교육포털 (ip-edu.net) · 발명교육자료</figcaption></figure>
+      </div>
+    </div>
+    <div class="talk" hidden><ul><li>오늘 보여 드린 수업은 이런 자료집에서 골라 우리 반에 맞게 고친 것입니다.</li><li>인천시교육청 간행물 게시판에서 '발명'으로 검색하면 16건이 나오고, 「차근차근 배우는 발명이야기」 같은 초등 발명 교재가 그 안에 있습니다. 첨부는 로그인 없이 받아졌습니다.</li><li>특허청(지금은 지식재산처)의 발명교육포털에도 발명교육 자료가 올라와 있습니다.</li><li>교재를 통째로 쓰기보다 한 차시만 떼어 반에 맞게 줄여 쓰시면 됩니다. 나만의 컵 활동지도 교재 프로젝트를 40분에 맞게 줄인 것입니다.</li></ul></div>
+  </section>
+
+  <section class="slide sc" data-id="s45" data-title="자료 받기">
+    <div class="sc-head"><span class="sc-chip">마무리</span><h2 class="sc-title">자료 받기</h2></div>
+    <div class="sc-body">
+      <div class="dl-grid">
+        <a class="dl-card dl-zip" href="cup.zip" download><span class="dl-top"><span class="dl-kind">ZIP</span><span class="dl-size">18MB</span></span><span class="dl-title">나만의 컵<small>캔바 AI</small></span><span class="dl-sub">PPT · 활동지 · 광고 예시</span><span class="dl-go">내려받기 ↓</span></a>
+        <a class="dl-card dl-zip" href="teachable.zip" download><span class="dl-top"><span class="dl-kind">ZIP</span><span class="dl-size">62MB</span></span><span class="dl-title">AI를 더한 발명<small>티처블머신</small></span><span class="dl-sub">PPT · 활동지 · 강아지·고양이 사진</span><span class="dl-go">내려받기 ↓</span></a>
+        <a class="dl-card dl-zip" href="nature.zip" download><span class="dl-top"><span class="dl-kind">ZIP</span><span class="dl-size">42MB</span></span><span class="dl-title">자연은 나의 선생님<small>오토드로우</small></span><span class="dl-sub">PPT · 활동지 · 활동지 예시</span><span class="dl-go">내려받기 ↓</span></a>
+        <a class="dl-card dl-link" href="https://www.ice.go.kr/arc/ad/func/ppm/selectPpmInfo.do?pblictnSn=3001179&amp;mi=10644" target="_blank" rel="noopener"><img class="dl-cover" alt="" src="img/06-cover-chagun.jpg"><span class="dl-top"><span class="dl-kind">링크</span></span><span class="dl-title">차근차근 배우는 발명이야기</span><span class="dl-sub">인천시교육청 <span class="nw">· 2024</span></span><span class="dl-go">공식 페이지 ↗</span></a>
+        <a class="dl-card dl-link" href="https://www.ip-edu.net/home/kor/board.do?menuPos=82&amp;act=detail&amp;idx=56964" target="_blank" rel="noopener"><img class="dl-cover" alt="" src="img/06-cover-ssok.jpg"><span class="dl-top"><span class="dl-kind">링크</span></span><span class="dl-title">쓱쏙 발명</span><span class="dl-sub">특허청·한국발명진흥회 <span class="nw">· 2025</span></span><span class="dl-go">공식 페이지 ↗</span></a>
+        <a class="dl-card dl-link" href="https://www.ip-edu.net/home/kor/board.do?menuPos=82&amp;act=detail&amp;idx=56960" target="_blank" rel="noopener"><img class="dl-cover" alt="" src="img/06-cover-tong.jpg"><span class="dl-top"><span class="dl-kind">링크</span></span><span class="dl-title">통통 스마트 발명</span><span class="dl-sub">특허청 <span class="nw">· 2024</span></span><span class="dl-go">공식 페이지 ↗</span></a>
+      </div>
+    </div>
+    <div class="talk" hidden><ul><li>위 줄은 오늘 소개한 수업 세 개의 자료를 수업별로 묶은 zip입니다. 누르면 바로 받아집니다. 수업 PPT와 학생용 활동지, 예시가 들어 있습니다.</li><li>아래 줄은 수업의 바탕이 된 자료집입니다. 누르면 공식 페이지가 새 탭으로 열리고, 거기서 받으시면 됩니다.</li><li>PPT는 40분 수업용으로 줄여 둔 것이라 그대로 쓰셔도 됩니다.</li></ul></div>
+  </section>
+
+  <section class="slide sc" data-id="s46" data-title="감사합니다">
+    <div class="sc-body end">
+      <p class="end-big">감사합니다</p>
+      <p class="end-sub">질문 받겠습니다 · 양상경 (인천효성남초)</p>
+    </div>
+    <div class="talk" hidden><ul><li>들어 주셔서 감사합니다.</li><li>해 보시다가 막히는 점이 있으면 지원단을 통해 편하게 연락 주세요.</li><li>이제 질문 받겠습니다.</li></ul></div>
+  </section>
+
+</div></div>
+
+<nav id="nav"></nav>
+
+<script>
+const BRANDS = [
+  ['apple', '애플'], ['baemin', '배민'], ['toss', '토스'], ['daangn', '당근'], ['kakaocorp', '카카오'],
+  ['netflix', '넷플릭스'], ['spotify', '스포티파이'], ['lego', '레고'],
+  ['aesop', '이솝'], ['porsche', '포르쉐'], ['mckinsey', '맥킨지'],
+];
+const slides = [...document.querySelectorAll('.slide')];
+const nav = document.getElementById('nav');
+const toc = document.getElementById('toc');
+const view = document.getElementById('view');
+const brandBox = document.getElementById('brand');
+const toast = document.getElementById('toast');
+let cur = 0;
+
+slides.forEach((s, i) => {
+  const dot = document.createElement('button');
+  dot.setAttribute('aria-label', s.dataset.title);
+  dot.onclick = () => go(i);
+  nav.appendChild(dot);
+
+});
+
+// 목차: 칩(' · ' 앞)으로 묶는다. 칩 없는 장(표지·감사합니다)은 지금 묶음에 붙는다. 칩의 ' · 단계'가 있으면 "단계 n - 제목"
+slides.forEach((s, i) => {
+  const chipText = s.querySelector('.sc-chip')?.textContent || '';
+  const chip = chipText.split(' · ')[0].trim();
+  let g = toc.lastElementChild;
+  if (!g || (chip && g.dataset.chip && g.dataset.chip !== chip)) {
+    g = document.createElement('li');
+    g.className = 'grp';
+    g.innerHTML = '<button class="gh"><span class="gt"></span><span class="gc"></span></button><ol></ol>';
+    g.querySelector('.gh').onclick = () => go(i);
+    toc.appendChild(g);
+  }
+  if (chip && !g.dataset.chip) { g.dataset.chip = chip; g.querySelector('.gt').textContent = chip; }
+  if (!g.dataset.chip && !chip) g.querySelector('.gt').textContent = s.dataset.title;
+  const stage = chipText.split(' · ')[1]?.trim();
+  let label = s.dataset.title;
+  // 같은 칩 장 수. 한 장뿐이거나 ①~⑥ 장이 섞인 단계는 번호를 붙이지 않는다. 제목이 단계 이름과 같으면 제목만
+  if (chip === '실습' && stage) {
+    if (g.dataset.stage !== stage) { g.dataset.stage = stage; const sh = document.createElement('li'); sh.className = 'sub'; sh.textContent = stage; g.querySelector('ol').appendChild(sh); }
+  }
+  const same = stage && chip !== '실습' ? slides.filter(x => (x.querySelector('.sc-chip')?.textContent || '').trim() === chipText.trim()) : [];
+  const circled = same.some(x => /^[①-⑥]/.test(x.dataset.title));
+  if (stage && same.length > 1 && !circled) {
+    if (g.dataset.stage !== stage) { g.dataset.stage = stage; g.dataset.sn = 0; }
+    g.dataset.sn = +g.dataset.sn + 1;
+    label = `${stage} ${g.dataset.sn} - ${label}`;
+  } else if (stage && same.length === 1 && label !== stage) {
+    label = `${stage} - ${label}`;
+  }
+  const li = document.createElement('li');
+  li.innerHTML = `<button class="item" data-i="${i}"><span class="n">${i + 1}</span><span></span></button>`;
+  li.querySelector('span:last-child').textContent = label;
+  li.firstChild.onclick = () => go(i);
+  g.querySelector('ol').appendChild(li);
+  g.querySelector('.gc').textContent = g.querySelectorAll('.item').length;
+});
+
+BRANDS.forEach(([id, name]) => {
+  const b = document.createElement('button');
+  b.dataset.brand = id; b.textContent = name;
+  b.onclick = () => setBrand(id, true);
+  brandBox.appendChild(b);
+});
+
+// 장 이동. showAll이면 그 장의 [data-step]을 다 보인 채로 연다 (이전 키로 돌아올 때)
+function go(i, showAll = false) {
+  cur = Math.max(0, Math.min(slides.length - 1, i));
+  slides.forEach((s, k) => s.classList.toggle('on', k === cur));
+  steps().forEach(el => el.classList.toggle('shown', showAll));
+  [...nav.children].forEach((b, k) => b.classList.toggle('on', k === cur));
+  toc.querySelectorAll('button[data-i]').forEach(b => b.classList.toggle('on', +b.dataset.i === cur));
+  [...toc.children].forEach(g => g.classList.toggle('open', !!g.querySelector('.item.on')));
+  const onBtn = toc.querySelector('button.on');
+  if (onBtn) onBtn.scrollIntoView({ block: 'nearest' });
+  history.replaceState(null, '', '#' + (cur + 1));
+}
+function steps() { return [...slides[cur].querySelectorAll('[data-step]')]; }
+// 다음: 숨은 단계가 있으면 하나 보이고, 없으면 다음 장
+function next() {
+  const hidden = steps().find(el => !el.classList.contains('shown'));
+  if (hidden) hidden.classList.add('shown');
+  else if (cur < slides.length - 1) go(cur + 1);
+}
+// 이전: 보인 단계가 있으면 마지막 것을 숨기고, 없으면 이전 장
+function prev() {
+  const shown = steps().filter(el => el.classList.contains('shown'));
+  if (shown.length) shown[shown.length - 1].classList.remove('shown');
+  else if (cur > 0) go(cur - 1, true);
+}
+
+function fit() {
+  const s = Math.min(view.clientWidth / 1920, view.clientHeight / 1080);
+  document.getElementById('stage').style.transform = `translate(-50%, -50%) scale(${s})`;
+}
+
+// 저장소는 목차 열림만 기억한다 (테마·브랜드는 html의 data-theme·data-brand가 기본값)
+function save(k, v) { try { localStorage.setItem(k, v); } catch {} }
+function load(k) { try { return localStorage.getItem(k); } catch { return null; } }
+
+function setTheme(t) {
+  document.documentElement.dataset.theme = t;
+  document.querySelectorAll('#theme button').forEach(b => b.classList.toggle('on', b.dataset.theme === t));
+}
+let toastTimer;
+function setBrand(id, announce) {
+  if (!BRANDS.some(([b]) => b === id)) id = 'apple';
+  document.documentElement.dataset.brand = id;
+  brandBox.querySelectorAll('button').forEach(b => b.classList.toggle('on', b.dataset.brand === id));
+  if (announce) {
+    toast.textContent = BRANDS.find(([b]) => b === id)[1];
+    toast.classList.add('show');
+    clearTimeout(toastTimer); toastTimer = setTimeout(() => toast.classList.remove('show'), 1200);
+  }
+}
+function nextBrand(step) {
+  const i = BRANDS.findIndex(([b]) => b === document.documentElement.dataset.brand);
+  setBrand(BRANDS[(i + step + BRANDS.length) % BRANDS.length][0], true);
+}
+function toggleSide(show) {
+  document.body.classList.toggle('no-side', !show);
+  save('deck-side', show ? '1' : '0');
+}
+
+document.querySelectorAll('#theme button').forEach(b => b.onclick = () => setTheme(b.dataset.theme));
+document.getElementById('close-side').onclick = () => toggleSide(false);
+document.getElementById('open-side').onclick = () => toggleSide(true);
+
+// 글자 키는 e.code로 받아 한글 입력 상태(ㄹ·ㅅ·ㅇ·ㅡ)에서도 된다
+addEventListener('keydown', e => {
+  if (e.ctrlKey || e.metaKey || e.altKey) return;
+  if (e.target.closest && e.target.closest('input, textarea, select, [contenteditable]')) return;
+  if (['ArrowRight', 'PageDown', ' '].includes(e.key) || (e.key === 'Enter' && !e.shiftKey)) { e.preventDefault(); next(); }
+  else if (['ArrowLeft', 'PageUp', 'Backspace'].includes(e.key) || (e.key === 'Enter' && e.shiftKey)) { e.preventDefault(); prev(); }
+  else if (e.code === 'KeyF') document.fullscreenElement ? document.exitFullscreen() : document.documentElement.requestFullscreen();
+  else if (e.code === 'KeyT') toggleSide(document.body.classList.contains('no-side'));
+  else if (e.code === 'KeyD') setTheme(document.documentElement.dataset.theme === 'dark' ? 'light' : 'dark');
+  else if (e.code === 'KeyM') nextBrand(e.shiftKey ? -1 : 1);
+});
+// 창 크기·목차 열고 닫기 모두 #view 크기 변화로 받아 다시 맞춘다
+new ResizeObserver(fit).observe(view);
+
+// 화면 클릭: 오른쪽 절반은 다음, 왼쪽 절반은 이전 (링크·버튼·입력·글 선택 중에는 안 넘김)
+view.addEventListener('click', e => {
+  if (e.target.closest('a, button, input, textarea, select, pre, [data-noclick]')) return;
+  if (String(getSelection()).length) return;
+  const r = view.getBoundingClientRect();
+  e.clientX - r.left > r.width / 2 ? next() : prev();
+});
+
+document.querySelectorAll('[data-copy]').forEach(btn => {
+  btn.onclick = async () => {
+    const id = btn.dataset.copy;
+    const text = document.getElementById(id).innerText;
+    let ok = true;
+    try { await navigator.clipboard.writeText(text); }
+    catch { const t = document.createElement('textarea'); t.value = text; document.body.appendChild(t); t.select(); ok = document.execCommand('copy'); t.remove(); }
+    const c = document.getElementById('c-' + id);
+    c.textContent = ok ? '복사됨 ✓' : '복사 안 됨 — 직접 선택해 복사';
+    c.classList.add('show'); setTimeout(() => c.classList.remove('show'), 1500);
+  };
+});
+
+setTheme(document.documentElement.dataset.theme || 'dark');
+setBrand(document.documentElement.dataset.brand || 'apple', false);
+document.documentElement.classList.add('preload');
+if (load('deck-side') === '0') document.body.classList.add('no-side');
+fit();
+requestAnimationFrame(() => requestAnimationFrame(() => document.documentElement.classList.remove('preload')));
+go((parseInt(location.hash.slice(1)) || 1) - 1);
+</script>
+<!-- deck-harness 노트 창: deck 뼈대의 </body> 바로 앞에 이 파일 내용을 통째로 붙인다.
+     장마다 <div class="talk" hidden>…말할 거리…</div> 를 section.slide 안에 둔다.
+     <meta name="deck-version" content="1"> 을 head에 둔다 (고칠 때마다 1씩 올린다 → 지난 메모 초안이 비워진다). -->
+<style>
+:root { --notes-h: 24vh; }
+body.notes-open #view { bottom: var(--notes-h); }
+#notes {
+  position: fixed; left: var(--side-w); right: 0; bottom: 0; height: var(--notes-h);
+  display: none; grid-template-columns: 1fr 1fr; gap: 20px; padding: 14px 22px 16px;
+  background: var(--bg); color: var(--ink); border-top: 1px solid color-mix(in srgb, var(--ink) 18%, transparent);
+  font: 400 15px/1.55 var(--font); z-index: 40; box-sizing: border-box; transition: left .3s ease;
+}
+body.no-side #notes { left: 0; }
+body.notes-open #notes { display: grid; }
+#notes .nt-grip { position: absolute; left: 0; right: 0; top: -5px; height: 10px; cursor: ns-resize; touch-action: none; z-index: 1; }
+#notes .nt-grip::after { content: ''; position: absolute; left: 50%; top: 3px; width: 44px; height: 4px; margin-left: -22px; border-radius: 2px; background: color-mix(in srgb, var(--ink) 28%, transparent); }
+#notes .nt-grip:hover::after, body.nt-dragging #notes .nt-grip::after { background: var(--accent); }
+body.nt-dragging, body.nt-dragging * { cursor: ns-resize !important; user-select: none !important; }
+#notes .nt-col { display: flex; flex-direction: column; min-height: 0; }
+#notes .nt-label { font-weight: 700; font-size: 13px; color: var(--muted); margin: 0 0 6px; display: flex; gap: 8px; align-items: center; }
+#notes .nt-pop {
+  font: inherit; color: inherit; background: none; border: 0; padding: 3px 8px; margin: -3px 0 -3px -8px; border-radius: 6px; cursor: pointer;
+  display: inline-flex; gap: 5px; align-items: center;
+}
+#notes .nt-pop em { font-style: normal; font-weight: 600; color: var(--accent-text, var(--accent)); }
+#notes .nt-pop:focus:not(:focus-visible) { outline: none; }
+#notes .nt-pop:hover { background: color-mix(in srgb, var(--ink) 10%, transparent); color: var(--ink); }
+#notes .nt-talk { overflow: auto; flex: 1; padding-right: 6px; }
+#notes .nt-talk:empty::before { content: '말할 거리가 아직 없어요'; color: var(--muted); }
+#notes .nt-talk ul { margin: 0; padding-left: 1.2em; }
+#notes textarea {
+  flex: 1; min-height: 0; resize: none; width: 100%; box-sizing: border-box; padding: 10px 12px;
+  font: inherit; color: var(--ink); background: color-mix(in srgb, var(--ink) 6%, transparent);
+  border: 1px solid color-mix(in srgb, var(--ink) 16%, transparent); border-radius: 8px;
+}
+#notes textarea:focus { outline: 2px solid var(--accent); outline-offset: -1px; }
+#notes .nt-overall { display: none; flex-direction: column; flex: 1; min-height: 0; margin-bottom: 10px; }
+#notes.first .nt-overall { display: flex; }
+/* 1장: 전체 메모와 이 장 메모를 나란히 (낮은 창에서도 두 칸 다 높이를 씀) */
+#notes.first .nt-col:last-child { display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: auto minmax(0, 1fr) auto; column-gap: 14px; }
+#notes.first .nt-overall { grid-column: 1; grid-row: 1 / 3; margin-bottom: 0; }
+#notes.first .nt-col:last-child > .nt-label { grid-column: 2; grid-row: 1; }
+#notes.first .nt-memo { grid-column: 2; grid-row: 2; }
+#notes.first .nt-bar { grid-column: 1 / -1; grid-row: 3; }
+#notes .nt-bar { display: flex; gap: 8px; align-items: center; margin-top: 8px; }
+#notes .nt-bar button {
+  font: 600 13px/1 var(--font); padding: 8px 12px; border-radius: 8px; cursor: pointer;
+  color: var(--ink); background: color-mix(in srgb, var(--ink) 10%, transparent); border: 0;
+}
+#notes .nt-bar button.nt-save { background: var(--accent); color: var(--bg); }
+#notes .nt-msg { font-size: 13px; color: var(--muted); }
+#notes-toggle {
+  position: fixed; right: 16px; bottom: 16px; z-index: 41; font: 600 13px/1 var(--font);
+  padding: 8px 12px; border-radius: 999px; border: 0; cursor: pointer;
+  color: var(--ink); background: color-mix(in srgb, var(--ink) 12%, transparent);
+}
+body.notes-open #notes-toggle { bottom: calc(var(--notes-h) + 12px); }
+.slide .talk { display: none !important; }
+/* 사진 자리: 사용자가 나중에 줄 사진이 들어갈 칸. <div class="photo-slot" data-want="교실에서 모둠 활동"></div> */
+.photo-slot {
+  height: 100%; max-width: 100%; aspect-ratio: var(--ar, 4/3); margin: 0 auto; box-sizing: border-box;
+  border: 3px dashed color-mix(in srgb, var(--ink) 30%, transparent); border-radius: 28px;
+  display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 14px; padding: 40px;
+  color: var(--muted); text-align: center;
+}
+.photo-slot::before { content: '사진 자리'; font: 700 34px/1 var(--font); color: var(--ink); opacity: .55; }
+.photo-slot::after { content: attr(data-want); font: 400 28px/1.4 var(--font); }
+@media print { #notes, #notes-toggle { display: none !important; } body.notes-open #view { bottom: 0; } }
+</style>
+
+<div id="notes" data-noclick>
+  <div class="nt-grip" title="끌어서 높이 조절 · 더블클릭하면 원래대로"></div>
+  <div class="nt-col">
+    <p class="nt-label"><button class="nt-pop" type="button" title="발표자 창을 따로 띄워요 — 지금 장·다음 장·말할 거리·타이머">말할 거리 <span aria-hidden="true">↗</span> <em>발표자 창</em></button> <span class="nt-where"></span></p>
+    <div class="nt-talk"></div>
+  </div>
+  <div class="nt-col">
+    <div class="nt-overall">
+      <p class="nt-label">전체 메모 — 덱 전체에 대한 수정 요청</p>
+      <textarea class="nt-all" placeholder="예: 전체적으로 짤을 더 넣어 줘 / 3장과 4장 순서 바꿔"></textarea>
+    </div>
+    <p class="nt-label">수정 메모 — 이 장</p>
+    <textarea class="nt-memo" placeholder="예: 이 짤 별로, 사진으로 바꿔 / 단어를 '시행착오'로"></textarea>
+    <div class="nt-bar">
+      <button class="nt-save" type="button">저장 (Ctrl+S)</button>
+      <span class="nt-msg"></span>
+    </div>
+  </div>
+</div>
+<button id="notes-toggle" type="button" data-noclick>노트 (N)</button>
+
+<script>
+(() => {
+  const slidesN = [...document.querySelectorAll('.slide')];
+  const pane = document.getElementById('notes');
+  const talkBox = pane.querySelector('.nt-talk');
+  const where = pane.querySelector('.nt-where');
+  const memo = pane.querySelector('.nt-memo');
+  const all = pane.querySelector('.nt-all');
+  const msg = pane.querySelector('.nt-msg');
+  const ver = (document.querySelector('meta[name="deck-version"]') || {}).content || '1';
+  const KEY = 'deck-notes:' + location.pathname + ':v' + ver;
+  const st = (() => { try { return JSON.parse(localStorage.getItem(KEY)) || {}; } catch { return {}; } })();
+  st.slides = st.slides || {}; st.overall = st.overall || '';
+  const keep = () => { try { localStorage.setItem(KEY, JSON.stringify(st)); } catch {} };
+  const idOf = (s, i) => s.dataset.id || String(i + 1);
+  let idx = 0;
+
+  function show() {
+    idx = Math.max(0, slidesN.findIndex(s => s.classList.contains('on')));
+    const s = slidesN[idx];
+    const t = s.querySelector('.talk');
+    talkBox.innerHTML = t ? t.innerHTML.trim() : '';
+    where.textContent = `· ${idx + 1}장 ${s.dataset.title || ''}`;
+    memo.value = st.slides[idOf(s, idx)] || '';
+    pane.classList.toggle('first', idx === 0);
+    all.value = st.overall;
+    queuePv();
+  }
+  memo.addEventListener('input', () => { const s = slidesN[idx]; const k = idOf(s, idx); if (memo.value.trim()) st.slides[k] = memo.value; else delete st.slides[k]; keep(); autoSave(); });
+  all.addEventListener('input', () => { st.overall = all.value; keep(); autoSave(); });
+  new MutationObserver(show).observe(document.getElementById('stage'), { subtree: true, attributes: true, attributeFilter: ['class'] });
+
+  function toggle(open) {
+    document.body.classList.toggle('notes-open', open);
+    try { localStorage.setItem('deck-notes-open', open ? '1' : '0'); } catch {}
+  }
+  // 위 테두리를 끌어 높이 조절 (기억해 둠, 더블클릭하면 원래대로)
+  const grip = pane.querySelector('.nt-grip');
+  const setH = px => {
+    if (px == null) document.documentElement.style.removeProperty('--notes-h');
+    else document.documentElement.style.setProperty('--notes-h', Math.round(Math.min(Math.max(px, 120), innerHeight * 0.85)) + 'px');
+    dispatchEvent(new Event('resize'));
+  };
+  try { const h = Number(localStorage.getItem('deck-notes-h')); if (h) setH(h); } catch {}
+  grip.addEventListener('pointerdown', e => {
+    e.preventDefault(); grip.setPointerCapture(e.pointerId); document.body.classList.add('nt-dragging');
+    const move = ev => setH(innerHeight - ev.clientY);
+    const up = () => {
+      grip.removeEventListener('pointermove', move); grip.removeEventListener('pointerup', up); grip.removeEventListener('pointercancel', up);
+      document.body.classList.remove('nt-dragging');
+      try { localStorage.setItem('deck-notes-h', String(pane.getBoundingClientRect().height)); } catch {}
+    };
+    grip.addEventListener('pointermove', move); grip.addEventListener('pointerup', up); grip.addEventListener('pointercancel', up);
+  });
+  grip.addEventListener('dblclick', () => { setH(null); try { localStorage.removeItem('deck-notes-h'); } catch {} });
+  document.getElementById('notes-toggle').onclick = () => toggle(!document.body.classList.contains('notes-open'));
+  addEventListener('keydown', e => {
+    if (e.ctrlKey || e.metaKey || e.altKey) return;
+    if (e.target.closest && e.target.closest('input, textarea, select, [contenteditable]')) return;
+    if (e.code === 'KeyN') toggle(!document.body.classList.contains('notes-open'));
+  });
+
+  function payload() {
+    const list = slidesN.map((s, i) => ({ n: i + 1, id: idOf(s, i), title: s.dataset.title || '', memo: (st.slides[idOf(s, i)] || '').trim() })).filter(x => x.memo);
+    const d = new Date(); const p = n => String(n).padStart(2, '0');
+    return JSON.stringify({
+      deck: decodeURIComponent(location.pathname.split('/').pop()),
+      deck_version: ver,
+      saved_at: `${d.getFullYear()}-${p(d.getMonth() + 1)}-${p(d.getDate())} ${p(d.getHours())}:${p(d.getMinutes())}`,
+      overall: st.overall.trim(),
+      slides: list
+    }, null, 2);
+  }
+  // '발표 열기.bat'(deck-serve.py)로 열면 메모를 쓰는 대로 덱 폴더의 '수정 요청.json'에 저절로 쓴다.
+  // HTML을 그냥 더블클릭해 열면(file://) 브라우저가 폴더에 못 쓰게 하므로 초안만 남고 [저장]은 다운로드 폴더로 받는다.
+  const served = location.protocol.startsWith('http');
+  let autoTimer = 0;
+  async function postNotes() {
+    const r = await fetch('/__notes', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: payload() });
+    if (!r.ok) throw new Error(r.status);
+  }
+  function autoSave() {
+    if (!served) { msg.textContent = '초안 보관됨 · 자동 저장은 덱 폴더의 "발표 열기.bat"로 열었을 때만'; return; }
+    msg.textContent = '쓰는 중…';
+    clearTimeout(autoTimer);
+    autoTimer = setTimeout(() => postNotes()
+      .then(() => { msg.textContent = '자동 저장됨 → 덱 폴더 수정 요청.json · 다 쓰면 터미널에 "고쳐"'; })
+      .catch(() => { msg.textContent = '자동 저장 실패 — "발표 열기" 검은 창이 닫혔나 봐요. 다시 여세요'; }), 800);
+  }
+  function saveFile() {
+    clearTimeout(autoTimer);
+    if (served) { autoTimer = 1; postNotes().then(() => { msg.textContent = '저장됨 → 덱 폴더 수정 요청.json · 터미널에 "고쳐"'; }).catch(() => { msg.textContent = '저장 실패 — "발표 열기" 검은 창이 닫혔나 봐요'; }); return; }
+    const deckName = decodeURIComponent(location.pathname.split('/').pop()).replace(/\.html?$/i, '');
+    const a = document.createElement('a');
+    a.href = URL.createObjectURL(new Blob([payload()], { type: 'application/json' }));
+    a.download = `수정 요청 - ${deckName}.json`; a.click(); setTimeout(() => URL.revokeObjectURL(a.href), 1000);
+    msg.textContent = '다운로드 폴더에 저장됨 → 터미널에 "고쳐" (자동 저장은 "발표 열기.bat"로 열면 돼요)';
+  }
+  pane.querySelector('.nt-save').onclick = saveFile;
+
+  // ── 발표자 창: 노트 창의 '말할 거리 ↗'를 누르면 따로 뜬다 (지금 장·다음 장·말할 거리·타이머·시계).
+  // 빈 창(about:blank)을 열고 이 덱이 그 안을 직접 그린다 → HTML을 더블클릭해 연 file://에서도 된다.
+  // 발표자 창에서 넘기면 이 덱의 next()/prev()를 부르고, 덱이 바뀌면(클릭·키·목차·D·M) 발표자 창이 따라 그린다.
+  let pw = null, pv = null, pvQ = false;
+  let t0 = Date.now(), pausedMs = 0, pausedAt = 0;
+  const pvAlive = () => !!(pw && !pw.closed && pv && pv.doc === pw.document);
+  function queuePv() { if (pvQ) return; pvQ = true; queueMicrotask(() => { pvQ = false; renderPresenter(); }); }
+  const PV_CSS = `
+html, body { margin: 0; height: 100%; overflow: hidden; background: var(--bg); color: var(--ink); font-family: var(--font); }
+.pv { position: fixed; inset: 0; display: grid; grid-template-rows: auto minmax(0, 1fr); gap: 14px; padding: 16px 20px 18px; box-sizing: border-box; }
+.pv-top { display: flex; align-items: center; gap: 14px; min-width: 0; }
+.pv-n { font: 700 22px/1 var(--font); font-variant-numeric: tabular-nums; white-space: nowrap; }
+.pv-n small { font-size: 15px; font-weight: 600; color: var(--muted); }
+.pv-title { flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-size: 17px; color: var(--muted); }
+.pv-timer { font: 700 30px/1 var(--font); font-variant-numeric: tabular-nums; letter-spacing: .02em; }
+.pv.paused .pv-timer { color: var(--muted); }
+.pv-clock { font: 600 17px/1 var(--font); font-variant-numeric: tabular-nums; color: var(--muted); padding-left: 6px; }
+/* 왼쪽 = 지금 화면 + 그 장의 말할 거리, 오른쪽 = 다음 화면을 크게 (2026-11-10 사용자: "다음 페이지 더 크게", "말할 거리는 현재 슬라이드에") */
+.pv-main { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.7fr); gap: 20px; min-height: 0; }
+.pv-col { display: flex; flex-direction: column; gap: 10px; min-height: 0; min-width: 0; }
+.pv-label { margin: 0; font: 700 13px/1.2 var(--font); color: var(--muted); display: flex; align-items: center; gap: 8px; min-height: 30px; }
+.pv-label b { color: var(--ink); font-weight: 700; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.pv-frame { position: relative; overflow: hidden; border-radius: 12px; outline: 1px solid color-mix(in srgb, var(--ink) 16%, transparent); }
+.pv-now { aspect-ratio: 16 / 9; width: 100%; flex: none; cursor: pointer; }
+.pv-next { aspect-ratio: 16 / 9; width: 100%; max-height: calc(100% - 40px); flex: none; }
+.pv-box { position: absolute; left: 0; top: 0; width: 1920px; height: 1080px; transform-origin: 0 0; background: var(--bg); }
+.pv-box .slide, .pv-box .slide * { transition: none !important; }
+.pv-end { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; color: var(--muted); font-size: 16px; background: color-mix(in srgb, var(--ink) 5%, transparent); }
+.pv-talkwrap { flex: 1; min-height: 0; display: flex; flex-direction: column; gap: 6px; }
+.pv-talk { flex: 1; min-height: 0; overflow: auto; font-size: var(--pv-fs, 24px); line-height: 1.6; padding-right: 8px; }
+.pv-talk ul, .pv-talk ol { margin: 0; padding-left: 1.15em; }
+.pv-talk li { margin: 0 0 .55em; }
+.pv-talk:empty::before { content: '이 장은 말할 거리가 없어요'; color: var(--muted); }
+.pv-bar { display: flex; align-items: center; gap: 10px; }
+.pv-prog { flex: 1; height: 4px; border-radius: 2px; background: color-mix(in srgb, var(--ink) 12%, transparent); overflow: hidden; }
+.pv-prog i { display: block; height: 100%; width: 0; background: var(--accent); }
+.pv button { font: 600 14px/1 var(--font); padding: 9px 13px; border-radius: 9px; border: 0; cursor: pointer; color: var(--ink); background: color-mix(in srgb, var(--ink) 10%, transparent); white-space: nowrap; }
+.pv button:hover { background: color-mix(in srgb, var(--ink) 17%, transparent); }
+.pv button:focus:not(:focus-visible) { outline: none; }
+.pv button.pv-go { background: var(--accent); color: var(--bg); padding: 11px 22px; font-size: 15px; }
+.pv-sp { flex: 1; }
+.pv-hint { font-size: 12px; color: var(--muted); }
+.pv-lost { position: fixed; inset: 0; z-index: 9; display: none; align-items: center; justify-content: center; text-align: center; padding: 40px; font-size: 18px; line-height: 1.7; background: color-mix(in srgb, var(--bg) 90%, transparent); }
+.pv.lost .pv-lost { display: flex; }
+@media (max-width: 820px) {
+  .pv-main { grid-template-columns: minmax(0, 1fr); }
+  .pv-col.pv-right, .pv-hint { display: none; }
+}`;
+  const PV_HTML = `
+<div class="pv">
+  <div class="pv-top">
+    <span class="pv-n"></span><span class="pv-title"></span>
+    <span class="pv-timer">0:00</span>
+    <button class="pv-pause" type="button" title="타이머 멈춤/계속">멈춤</button>
+    <button class="pv-reset" type="button" title="타이머 0으로">↺</button>
+    <span class="pv-clock"></span>
+  </div>
+  <div class="pv-main">
+    <div class="pv-col">
+      <p class="pv-label">지금 화면</p>
+      <div class="pv-frame pv-now" title="오른쪽 반 누르면 다음, 왼쪽 반 누르면 이전"><div class="pv-box"></div></div>
+      <div class="pv-bar">
+        <button class="pv-prev" type="button">← 이전</button>
+        <button class="pv-go" type="button">다음 →</button>
+        <div class="pv-prog"><i></i></div>
+        <span class="pv-hint">→ · Space 다음 / ← 이전</span>
+      </div>
+      <div class="pv-talkwrap">
+        <p class="pv-label">말할 거리 <span class="pv-sp"></span>
+          <button class="pv-fs" data-d="-2" type="button" title="글자 작게">가−</button>
+          <button class="pv-fs" data-d="2" type="button" title="글자 크게">가+</button></p>
+        <div class="pv-talk"></div>
+      </div>
+    </div>
+    <div class="pv-col pv-right">
+      <p class="pv-label">다음 · <b class="pv-nextname"></b></p>
+      <div class="pv-frame pv-next"><div class="pv-box"></div></div>
+    </div>
+  </div>
+  <div class="pv-lost">덱 창이 닫히거나 새로 고쳐져서 연결이 끊겼어요.<br>이 창을 닫고, 덱에서 N → '말할 거리 ↗'를 다시 누르세요.</div>
+</div>`;
+
+  function openPresenter() {
+    if (pvAlive()) { pw.focus(); return; }
+    // 같은 이름 창이 이미 있으면(덱을 새로 고친 뒤 등) 그 창을 다시 쓴다
+    const FEAT = 'popup,width=1280,height=800';
+    pw = window.open('', 'deck-presenter', FEAT);
+    if (!pw) { msg.textContent = '발표자 창이 막혔어요 — 주소창 오른쪽 팝업 차단 아이콘에서 허용해 주세요'; return; }
+    if (!canTouch(pw)) {
+      // 남아 있던 옛 발표자 창(file:// 덱을 새로 고치기 전 것)은 출처가 달라 손을 못 댄다 → 닫고 새 이름으로 연다
+      try { pw.close(); } catch {}
+      pw = window.open('', 'deck-presenter-' + Date.now(), FEAT);
+      if (!pw || !canTouch(pw)) { msg.textContent = '발표자 창을 못 열었어요 — 열려 있는 발표자 창을 닫고 다시 누르세요'; return; }
+    }
+    startPresenter();
+  }
+  function canTouch(w) { try { return !!w.document.documentElement; } catch { return false; } }
+  function startPresenter() { buildPresenter(); renderPresenter(); pw.focus(); }
+  function buildPresenter() {
+    const d = pw.document;
+    d.open();
+    d.write('<!doctype html><html lang="ko"><head><meta charset="utf-8"><title>발표자 창 · ' + (document.title || '덱').replace(/</g, '&lt;') + '</title></head><body></body></html>');
+    d.close();
+    const base = d.createElement('base'); base.href = location.href; d.head.appendChild(base);
+    // 덱의 글꼴·테마·브랜드·장 배치 CSS를 그대로 가져온다 (미리보기가 실제 화면과 같아야 하니까)
+    document.querySelectorAll('link[rel="preconnect"], link[rel="stylesheet"], style').forEach(n => d.head.appendChild(d.importNode(n, true)));
+    const css = d.createElement('style'); css.textContent = PV_CSS; d.head.appendChild(css);
+    d.body.innerHTML = PV_HTML;
+    const q = s => d.querySelector(s);
+    pv = { doc: d, root: q('.pv'), n: q('.pv-n'), title: q('.pv-title'), timer: q('.pv-timer'), clock: q('.pv-clock'),
+      now: q('.pv-now'), next: q('.pv-next'), nextName: q('.pv-nextname'), talk: q('.pv-talk'), prog: q('.pv-prog i') };
+    let fs = 24; try { fs = Number(localStorage.getItem('deck-pv-fs')) || 24; } catch {}
+    const setFs = v => { fs = Math.min(48, Math.max(14, v)); pv.root.style.setProperty('--pv-fs', fs + 'px'); try { localStorage.setItem('deck-pv-fs', String(fs)); } catch {} };
+    setFs(fs);
+    d.querySelectorAll('.pv-fs').forEach(b => b.onclick = () => setFs(fs + Number(b.dataset.d)));
+    q('.pv-go').onclick = () => deckMove(1);
+    q('.pv-prev').onclick = () => deckMove(-1);
+    q('.pv-reset').onclick = () => { t0 = Date.now(); pausedMs = 0; if (pausedAt) pausedAt = Date.now(); tick(); };
+    q('.pv-pause').onclick = e => {
+      if (pausedAt) { pausedMs += Date.now() - pausedAt; pausedAt = 0; e.currentTarget.textContent = '멈춤'; }
+      else { pausedAt = Date.now(); e.currentTarget.textContent = '계속'; }
+      pv.root.classList.toggle('paused', !!pausedAt); tick();
+    };
+    pv.now.onclick = e => { const r = pv.now.getBoundingClientRect(); deckMove(e.clientX - r.left > r.width / 2 ? 1 : -1); };
+    // 덱과 같은 키 (리모컨·클리커는 PageDown/PageUp을 보낸다). 글자 키는 e.code라 한글 입력 상태에서도 된다
+    d.addEventListener('keydown', e => {
+      if (e.ctrlKey || e.metaKey || e.altKey) return;
+      if (['ArrowRight', 'ArrowDown', 'PageDown', ' '].includes(e.key) || (e.key === 'Enter' && !e.shiftKey)) { e.preventDefault(); deckMove(1); }
+      else if (['ArrowLeft', 'ArrowUp', 'PageUp', 'Backspace'].includes(e.key) || (e.key === 'Enter' && e.shiftKey)) { e.preventDefault(); deckMove(-1); }
+      else if (e.code === 'KeyD' && typeof setTheme === 'function') setTheme(document.documentElement.dataset.theme === 'dark' ? 'light' : 'dark');
+      else if (e.code === 'KeyM' && typeof nextBrand === 'function') nextBrand(e.shiftKey ? -1 : 1);
+    });
+    new pw.ResizeObserver(fitPv).observe(pv.now);
+    new pw.ResizeObserver(fitPv).observe(pv.next);
+    pw.setInterval(tick, 250);
+    tick();
+  }
+  function deckMove(dir) {
+    if (dir > 0 && typeof next === 'function') next();
+    else if (dir < 0 && typeof prev === 'function') prev();
+    queuePv();
+  }
+  function tick() {
+    if (!pvAlive()) return;
+    const sec = Math.max(0, Math.floor(((pausedAt || Date.now()) - t0 - pausedMs) / 1000));
+    const h = Math.floor(sec / 3600), m = Math.floor(sec / 60) % 60, s = sec % 60, p = n => String(n).padStart(2, '0');
+    pv.timer.textContent = h ? `${h}:${p(m)}:${p(s)}` : `${m}:${p(s)}`;
+    const now = new Date();
+    pv.clock.textContent = `${p(now.getHours())}:${p(now.getMinutes())}`;
+  }
+  function fitPv() {
+    if (!pvAlive()) return;
+    [pv.now, pv.next].forEach(f => {
+      const box = f.querySelector('.pv-box'), W = f.clientWidth, H = f.clientHeight;
+      if (!W || !H) return;
+      const s = Math.min(W / 1920, H / 1080);
+      box.style.transform = `translate(${(W - 1920 * s) / 2}px, ${(H - 1080 * s) / 2}px) scale(${s})`;
+    });
+  }
+  // 장 하나를 발표자 창 문서로 복제한다. shown = 보일 [data-step] 개수 (null이면 덱 상태 그대로)
+  function cloneSlide(s, shown) {
+    const c = pv.doc.importNode(s, true);
+    c.classList.add('on');
+    c.querySelectorAll('.talk').forEach(t => t.remove());
+    c.querySelectorAll('[id]').forEach(e => e.removeAttribute('id'));
+    c.querySelectorAll('video, audio').forEach(v => { v.removeAttribute('autoplay'); v.muted = true; v.setAttribute('preload', 'metadata'); });
+    if (shown != null) c.querySelectorAll('[data-step]').forEach((el, k) => el.classList.toggle('shown', k < shown));
+    return c;
+  }
+  function put(frame, node, empty) {
+    frame.querySelector('.pv-box').replaceChildren(...(node ? [node] : []));
+    const old = frame.querySelector('.pv-end'); if (old) old.remove();
+    if (!node) { const e = pv.doc.createElement('div'); e.className = 'pv-end'; e.textContent = empty; frame.appendChild(e); }
+  }
+  function renderPresenter() {
+    if (!pvAlive()) return;
+    const de = pv.doc.documentElement;
+    de.dataset.theme = document.documentElement.dataset.theme || 'dark';
+    de.dataset.brand = document.documentElement.dataset.brand || 'apple';
+    const i = Math.max(0, slidesN.findIndex(s => s.classList.contains('on')));
+    const s = slidesN[i];
+    const stepEls = [...s.querySelectorAll('[data-step]')];
+    const shownN = stepEls.filter(el => el.classList.contains('shown')).length;
+    pv.n.innerHTML = `${i + 1}<small> / ${slidesN.length}</small>`;
+    pv.title.textContent = s.dataset.title || '';
+    put(pv.now, cloneSlide(s, null));
+    if (shownN < stepEls.length) {
+      put(pv.next, cloneSlide(s, shownN + 1));
+      pv.nextName.textContent = `같은 장 · 하나 더 보이기 (${shownN + 1}/${stepEls.length})`;
+    } else if (i + 1 < slidesN.length) {
+      const n = slidesN[i + 1];
+      put(pv.next, cloneSlide(n, 0));
+      pv.nextName.textContent = `${i + 2}장 ${n.dataset.title || ''}`;
+    } else {
+      put(pv.next, null, '마지막 장이에요');
+      pv.nextName.textContent = '끝';
+    }
+    const t = s.querySelector('.talk');
+    const html = t ? t.innerHTML.trim() : '';
+    if (pv.talk.innerHTML !== html) { pv.talk.innerHTML = html; pv.talk.scrollTop = 0; }
+    pv.prog.style.width = ((i + 1) / slidesN.length * 100) + '%';
+    pv.root.classList.remove('lost');
+    fitPv();
+  }
+  pane.querySelector('.nt-pop').onclick = openPresenter;
+  new MutationObserver(queuePv).observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme', 'data-brand'] });
+  // 덱 창을 닫거나 새로 고치면 발표자 창도 닫는다 (다시 누르면 새로 열린다). 못 닫히면 '끊김' 안내가 남는다
+  addEventListener('pagehide', () => { if (pvAlive()) { pv.root.classList.add('lost'); try { pw.close(); } catch {} } });
+
+  try { if (localStorage.getItem('deck-notes-open') === '1') toggle(true); } catch {}
+  show();
+})();
+</script>
+
+</body>
+</html>
