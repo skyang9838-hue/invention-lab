@@ -626,9 +626,6 @@ img.qr { display: block; background: #fff; padding: 14px; border-radius: 18px; b
 .dl-go { margin-top: auto; font: 700 28px/1.2 var(--font); color: var(--accent-text); }
 .dl-link { padding-right: 210px; }
 .dl-cover { position: absolute; right: 36px; top: 50%; transform: translateY(-50%); width: 150px; height: 212px; object-fit: cover; border-radius: 10px; box-shadow: 0 0 0 1px var(--hairline), 0 8px 20px rgba(0,0,0,.12); }
-/* 배포판: 수정 메모 칸 숨김 (말할 거리·발표자 창은 남김) */
-#notes { grid-template-columns: 1fr !important; }
-#notes > .nt-col:last-child { display: none !important; }
 </style>
 </head>
 <body>
@@ -663,7 +660,6 @@ img.qr { display: block; background: #fff; padding: 14px; border-radius: 18px; b
     <ul class="sc-meta">
       <li>인천시교육청 발명교육지원단 · 양상경 (인천효성남초)</li>
     </ul>
-    <div class="talk" hidden><ul><li>연수에서 쓴 실습 화면과 수업 자료를 모아 둔 페이지입니다.</li><li>← → 키나 화면 아래 점으로 넘기고, T를 누르면 목차가 열립니다.</li><li>마지막 쪽 「자료 받기」에서 수업별 자료를 내려받을 수 있습니다.</li></ul></div>
   </section>
 
   <section class="slide sc" data-id="s32" data-title="발명 주사위">
@@ -679,7 +675,6 @@ img.qr { display: block; background: #fff; padding: 14px; border-radius: 18px; b
         <figure class="shot"><img alt="발명 주사위 안내판: 우산 + 빼기와 질문 '우산에서 무엇을 빼면 더 편해질까?'" src="img/crop-dice-v3.jpg"></figure>
       </div>
     </div>
-    <div class="talk" hidden><ul><li>QR을 찍거나 주소로 들어가 주세요. 로그인은 필요 없습니다.</li><li>주제를 고르고 「주사위 굴리기」를 누르면 공항 안내판처럼 글자판이 넘어가면서 물건 하나와 기법 하나가 나옵니다. 그 아래에 "우산에서 무엇을 빼면 더 편해질까?" 같은 질문이 크게 나옵니다. 양옆의 「물건만 다시」·「기법만 다시」로 한쪽만 바꿀 수도 있습니다.</li><li>교실 TV로 띄울 때는 오른쪽 위 버튼으로 전체 화면을 켜고, 스페이스 키로 굴리면 됩니다. 숫자 1·2는 물건만·기법만 다시입니다. 소리는 스피커 버튼으로 끌 수 있습니다.</li><li>기법은 인천시교육청 2024 「차근차근 배우는 발명이야기」의 '발명 10계명' 가운데 더하기·빼기·모양 바꾸기·반대로 하기·용도 바꾸기 다섯 가지입니다.</li><li>이 웹앱은 아이디어를 대신 내 주지 않습니다. 생각의 출발점만 던져 줍니다.</li><li>두세 번 굴려 보시고, 떠오른 아이디어를 옆 선생님께 한 문장으로 말해 보세요.</li><li>활동지에는 나온 물건·기법과 떠오른 아이디어를 적습니다. 주제 「컵」은 물건이 컵으로 고정되고 기법만 굴립니다.</li></ul></div>
   </section>
 
   <section class="slide sc" data-id="s32d" data-title="주제 「컵」">
@@ -688,7 +683,6 @@ img.qr { display: block; background: #fff; padding: 14px; border-radius: 18px; b
       <figure class="sc-fig" style="flex-direction:column;aspect-ratio:auto;min-width:0"><img class="scr" style="width:100%;height:auto;flex:none" alt="발명 주사위 주제 컵: 물건 컵, 기법 용도 바꾸기" src="img/dice-cup-roll.png"><figcaption>주제 「컵」 · 기법만 굴리기</figcaption></figure>
       <figure class="sc-fig" style="flex-direction:column;aspect-ratio:auto;min-width:0"><img class="scr" style="width:100%;height:auto;flex:none" alt="고친 나만의 컵 활동지 1번: 물건 컵 + 나온 기법에 동그라미 → 내 아이디어" src="img/ws-cup-1.jpg"><figcaption>나만의 컵 활동지 1번 칸 (고친 판)</figcaption></figure>
     </div>
-    <div class="talk" hidden><ul><li>컵을 고르면 물건이 컵으로 고정되고 기법만 굴러가서, 나만의 컵 수업에 바로 붙여 쓸 수 있습니다.</li><li>「나만의 컵 활동지」도 고쳐서, 1번에 물건 컵을 두고 나온 기법에 동그라미를 친 뒤 내 아이디어를 쓰게 했습니다.</li></ul></div>
   </section>
 
   <section class="slide sc" data-id="s32c" data-title="발명 주사위 활동지">
@@ -697,7 +691,6 @@ img.qr { display: block; background: #fff; padding: 14px; border-radius: 18px; b
       <figure class="sc-fig" style="height:580px;aspect-ratio:1590/972;flex:none"><img class="scr" alt="발명 주사위 활동지 1번 표: 회 · 물건 · 기법 · 내 아이디어 · ☆" src="img/ws-dice-table.jpg"></figure>
       <p class="cap-sm">발명 주사위 활동지 · 1번 표 (아래에 캔바 AI 부탁 문장 칸)</p>
     </div>
-    <div class="talk" hidden><ul><li>「발명 주사위 활동지」는 굴릴 때마다 물건, 기법, 내 아이디어를 쓰고, 제일 좋은 것에 ☆를 친 다음 캔바 AI 부탁 문장을 씁니다.</li><li>오늘 자료 zip에 이 활동지와 고친 나만의 컵 활동지가 같이 들어 있습니다.</li></ul></div>
   </section>
 
   <section class="slide sc" data-id="s34" data-title="준비">
@@ -713,7 +706,6 @@ img.qr { display: block; background: #fff; padding: 14px; border-radius: 18px; b
         <figure class="shot"><img alt="우리 반 노트북 크롬에서 연 티처블머신 (가림본)" src="img/crop-7403-laptop.jpg"><figcaption>우리 반 노트북 · 크롬에서 연 티처블머신 (11/17, 가림)</figcaption></figure>
       </div>
     </div>
-    <div class="talk" hidden><ul><li>시간이 되면 직접 만들어 보겠습니다. 시간이 모자라면 이 부분은 건너뜁니다.</li><li>노트북이 있으시면 한 분에 한 대, 없으시면 제 노트북으로 돌아가며 해 보세요. 크롬으로 열고, 카메라 덮개가 닫혀 있지 않은지 봐 주세요.</li><li>수업 PPT는 짝 둘이 노트북 한 대로 짜 두었습니다.</li><li>전체 6단계, 10분 남짓 걸립니다.</li></ul></div>
   </section>
 
   <section class="slide sc" data-id="s35" data-title="1단계 사이트 열기">
@@ -727,7 +719,6 @@ img.qr { display: block; background: #fff; padding: 14px; border-radius: 18px; b
         <figure class="shot"><img alt="티처블머신 첫 화면, 2번: 시작하기 버튼" src="img/s2-01.jpg"></figure>
       </div>
     </div>
-    <div class="talk" hidden><ul><li>주소창에 teachablemachine.withgoogle.com을 치시거나, 검색창에 '티처블머신'을 치셔도 됩니다.</li><li>화면 아래 영어 쿠키 안내가 뜨면 「OK, got it」을 누르고, 파란 「시작하기」를 누릅니다. 로그인은 필요 없습니다.</li></ul></div>
   </section>
 
   <section class="slide sc" data-id="s36" data-title="2단계 프로젝트 고르기">
@@ -744,7 +735,6 @@ img.qr { display: block; background: #fff; padding: 14px; border-radius: 18px; b
         </div>
       </div>
     </div>
-    <div class="talk" hidden><ul><li>세 가지 프로젝트 가운데 맨 왼쪽 「이미지 프로젝트」를 누릅니다.</li><li>창이 뜨면 「표준 이미지 모델」을 고릅니다.</li><li>강아지·고양이 구분도, 표정 인식기도 모두 이 이미지 프로젝트로 만듭니다.</li></ul></div>
   </section>
 
   <section class="slide sc" data-id="s37" data-title="3단계 이름 붙이기">
@@ -762,7 +752,6 @@ img.qr { display: block; background: #fff; padding: 14px; border-radius: 18px; b
         </div>
       </div>
     </div>
-    <div class="talk" hidden><ul><li>「1. 샘플 수집」 안내 창이 뜨면 오른쪽 위 X로 닫습니다.</li><li>클래스는 AI가 나눌 칸입니다. 처음엔 두 칸이 있습니다. 「Class 1」 옆 연필을 눌러 '웃음', 「Class 2」는 '놀람'으로 바꿉니다.</li><li>아래 「클래스 추가」를 눌러 세 번째 칸을 만들고 '찡그림'이라고 붙입니다.</li></ul></div>
   </section>
 
   <section class="slide sc" data-id="s38" data-title="4단계 표정 찍기">
@@ -780,7 +769,6 @@ img.qr { display: block; background: #fff; padding: 14px; border-radius: 18px; b
         </div>
       </div>
     </div>
-    <div class="talk" hidden><ul><li>웃음 칸의 「웹캠」 → 「방문할 때마다 허용」.</li><li>웃는 얼굴로 「길게 눌러서 녹화하기」를 꾹 눌러 30장 넘게 찍습니다.</li><li>놀람·찡그림도 똑같이 합니다.</li></ul></div>
   </section>
 
   <section class="slide sc" data-id="s39" data-title="5단계 학습시키기">
@@ -794,7 +782,6 @@ img.qr { display: block; background: #fff; padding: 14px; border-radius: 18px; b
         <figure class="shot"><img alt="1번: 모델 학습 중, 2번: 탭을 전환하지 마세요 안내" src="img/s2-05.jpg"></figure>
       </div>
     </div>
-    <div class="talk" hidden><ul><li>가운데 「모델 학습시키기」를 누릅니다.</li><li>학습하는 동안 다른 탭으로 넘어가면 학습이 멈출 수 있으니, 끝날 때까지 이 화면에 그대로 두세요. 화면 위에도 "탭을 전환하지 마세요"라고 뜹니다.</li><li>캡처의 초록 화면은 제가 캡처할 때 쓴 시험용 카메라 화면입니다.</li></ul></div>
   </section>
 
   <section class="slide sc" data-id="s40" data-title="6단계 시험하기">
@@ -814,7 +801,6 @@ img.qr { display: block; background: #fff; padding: 14px; border-radius: 18px; b
         <p class="lab-ok">막대 1등이 표정을 따라 바뀌면 성공</p>
       </div>
     </div>
-    <div class="talk" hidden><ul><li>학습이 끝나면 오른쪽 「미리보기」에 웹캠 화면이 뜹니다. 표정을 바꾸면 웃음·놀람·찡그림 막대가 바뀝니다.</li><li>막대 1등이 표정을 따라 바뀌면 성공입니다.</li><li>이번엔 옆 선생님 얼굴로 시험해 보세요. 다른 사람 얼굴에서는 틀리기도 합니다. "왜 그럴까?"가 아이들과 나눌 질문입니다. AI는 배운 것만 압니다.</li><li>수업 PPT에는 짝 얼굴로 바꿔 시험하는 단계를 넣어 두었습니다.</li></ul></div>
   </section>
 
   <section class="slide sc" data-id="s41" data-title="문제 해결">
@@ -829,7 +815,6 @@ img.qr { display: block; background: #fff; padding: 14px; border-radius: 18px; b
         <figure class="shot"><img alt="웹캠 칸의 오류 문구: 웹캠을 여는 중에 오류가 발생했습니다. 권한을 사용 설정했는지 확인하세요" src="img/crop-tm-cam-error.jpg"><figcaption>카메라가 막혔을 때 웹캠 칸 (크롬 실제 화면)</figcaption></figure>
       </div>
     </div>
-    <div class="talk" hidden><ul><li>「허용 안함」을 누르면 웹캠 칸에 이런 오류 문구가 뜹니다. 주소창 왼쪽 아이콘에서 카메라를 허용하고 새로고침(F5)하면 됩니다.</li><li>줌이나 카메라 앱처럼 카메라를 쓰고 있는 프로그램이 있으면 닫고 새로고침합니다.</li><li>웨일·엣지도 똑같이 주소창 왼쪽 아이콘에서 카메라를 허용하면 됩니다.</li></ul></div>
   </section>
 
   <section class="slide sc" data-id="s43" data-title="발명교육 자료집">
@@ -841,7 +826,6 @@ img.qr { display: block; background: #fff; padding: 14px; border-radius: 18px; b
         <figure class="sc-fig"><img class="scr" alt="발명교육포털 발명교육자료 카드 3개" src="img/crop-portal-cards.jpg"><figcaption>발명교육포털 (ip-edu.net) · 발명교육자료</figcaption></figure>
       </div>
     </div>
-    <div class="talk" hidden><ul><li>오늘 보여 드린 수업은 이런 자료집에서 골라 우리 반에 맞게 고친 것입니다.</li><li>인천시교육청 간행물 게시판에서 '발명'으로 검색하면 16건이 나오고, 「차근차근 배우는 발명이야기」 같은 초등 발명 교재가 그 안에 있습니다. 첨부는 로그인 없이 받아졌습니다.</li><li>특허청(지금은 지식재산처)의 발명교육포털에도 발명교육 자료가 올라와 있습니다.</li><li>교재를 통째로 쓰기보다 한 차시만 떼어 반에 맞게 줄여 쓰시면 됩니다. 나만의 컵 활동지도 교재 프로젝트를 40분에 맞게 줄인 것입니다.</li></ul></div>
   </section>
 
   <section class="slide sc" data-id="s45" data-title="자료 받기">
@@ -857,7 +841,6 @@ img.qr { display: block; background: #fff; padding: 14px; border-radius: 18px; b
         <a class="dl-card dl-link" href="https://www.ip-edu.net/home/kor/board.do?menuPos=82&amp;act=detail&amp;idx=56960" target="_blank" rel="noopener"><img class="dl-cover" alt="" src="img/06-cover-tong.jpg"><span class="dl-top"><span class="dl-kind">링크</span></span><span class="dl-title">통통 스마트 발명</span><span class="dl-sub">특허청 <span class="nw">· 2024</span></span><span class="dl-go">공식 페이지 ↗</span></a>
       </div>
     </div>
-    <div class="talk" hidden><ul><li>위 줄은 오늘 소개한 수업 네 개의 자료를 수업별로 묶은 zip입니다. 누르면 바로 받아집니다. 앞의 세 개에는 수업 PPT와 학생용 활동지, 예시가 들어 있습니다.</li><li>친환경 실천 이모티콘은 「쓱쏙 발명」 교사용 지도서에서 그 차시 쪽만 뽑은 PDF입니다. 수업 지도안, 활동별 자료, 평가 기준이 들어 있습니다.</li><li>아래 줄은 수업의 바탕이 된 자료집입니다. 누르면 공식 페이지가 새 탭으로 열리고, 거기서 받으시면 됩니다.</li><li>PPT는 40분 수업용으로 줄여 둔 것이라 그대로 쓰셔도 됩니다.</li></ul></div>
   </section>
 
   <section class="slide sc" data-id="s46" data-title="감사합니다">
@@ -865,7 +848,6 @@ img.qr { display: block; background: #fff; padding: 14px; border-radius: 18px; b
       <p class="end-big">감사합니다</p>
       <p class="end-sub">질문 받겠습니다 · 양상경 (인천효성남초)</p>
     </div>
-    <div class="talk" hidden><ul><li>들어 주셔서 감사합니다.</li><li>해 보시다가 막히는 점이 있으면 지원단을 통해 편하게 연락 주세요.</li><li>이제 질문 받겠습니다.</li></ul></div>
   </section>
 
 </div></div>
@@ -1044,410 +1026,7 @@ fit();
 requestAnimationFrame(() => requestAnimationFrame(() => document.documentElement.classList.remove('preload')));
 go((parseInt(location.hash.slice(1)) || 1) - 1);
 </script>
-<!-- deck-harness 노트 창: deck 뼈대의 </body> 바로 앞에 이 파일 내용을 통째로 붙인다.
-     장마다 <div class="talk" hidden>…말할 거리…</div> 를 section.slide 안에 둔다.
-     <meta name="deck-version" content="1"> 을 head에 둔다 (고칠 때마다 1씩 올린다 → 지난 메모 초안이 비워진다). -->
-<style>
-:root { --notes-h: 24vh; }
-body.notes-open #view { bottom: var(--notes-h); }
-#notes {
-  position: fixed; left: var(--side-w); right: 0; bottom: 0; height: var(--notes-h);
-  display: none; grid-template-columns: 1fr 1fr; gap: 20px; padding: 14px 22px 16px;
-  background: var(--bg); color: var(--ink); border-top: 1px solid color-mix(in srgb, var(--ink) 18%, transparent);
-  font: 400 15px/1.55 var(--font); z-index: 40; box-sizing: border-box; transition: left .3s ease;
-}
-body.no-side #notes { left: 0; }
-body.notes-open #notes { display: grid; }
-#notes .nt-grip { position: absolute; left: 0; right: 0; top: -5px; height: 10px; cursor: ns-resize; touch-action: none; z-index: 1; }
-#notes .nt-grip::after { content: ''; position: absolute; left: 50%; top: 3px; width: 44px; height: 4px; margin-left: -22px; border-radius: 2px; background: color-mix(in srgb, var(--ink) 28%, transparent); }
-#notes .nt-grip:hover::after, body.nt-dragging #notes .nt-grip::after { background: var(--accent); }
-body.nt-dragging, body.nt-dragging * { cursor: ns-resize !important; user-select: none !important; }
-#notes .nt-col { display: flex; flex-direction: column; min-height: 0; }
-#notes .nt-label { font-weight: 700; font-size: 13px; color: var(--muted); margin: 0 0 6px; display: flex; gap: 8px; align-items: center; }
-#notes .nt-pop {
-  font: inherit; color: inherit; background: none; border: 0; padding: 3px 8px; margin: -3px 0 -3px -8px; border-radius: 6px; cursor: pointer;
-  display: inline-flex; gap: 5px; align-items: center;
-}
-#notes .nt-pop em { font-style: normal; font-weight: 600; color: var(--accent-text, var(--accent)); }
-#notes .nt-pop:focus:not(:focus-visible) { outline: none; }
-#notes .nt-pop:hover { background: color-mix(in srgb, var(--ink) 10%, transparent); color: var(--ink); }
-#notes .nt-talk { overflow: auto; flex: 1; padding-right: 6px; }
-#notes .nt-talk:empty::before { content: '말할 거리가 아직 없어요'; color: var(--muted); }
-#notes .nt-talk ul { margin: 0; padding-left: 1.2em; }
-#notes textarea {
-  flex: 1; min-height: 0; resize: none; width: 100%; box-sizing: border-box; padding: 10px 12px;
-  font: inherit; color: var(--ink); background: color-mix(in srgb, var(--ink) 6%, transparent);
-  border: 1px solid color-mix(in srgb, var(--ink) 16%, transparent); border-radius: 8px;
-}
-#notes textarea:focus { outline: 2px solid var(--accent); outline-offset: -1px; }
-#notes .nt-overall { display: none; flex-direction: column; flex: 1; min-height: 0; margin-bottom: 10px; }
-#notes.first .nt-overall { display: flex; }
-/* 1장: 전체 메모와 이 장 메모를 나란히 (낮은 창에서도 두 칸 다 높이를 씀) */
-#notes.first .nt-col:last-child { display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: auto minmax(0, 1fr) auto; column-gap: 14px; }
-#notes.first .nt-overall { grid-column: 1; grid-row: 1 / 3; margin-bottom: 0; }
-#notes.first .nt-col:last-child > .nt-label { grid-column: 2; grid-row: 1; }
-#notes.first .nt-memo { grid-column: 2; grid-row: 2; }
-#notes.first .nt-bar { grid-column: 1 / -1; grid-row: 3; }
-#notes .nt-bar { display: flex; gap: 8px; align-items: center; margin-top: 8px; }
-#notes .nt-bar button {
-  font: 600 13px/1 var(--font); padding: 8px 12px; border-radius: 8px; cursor: pointer;
-  color: var(--ink); background: color-mix(in srgb, var(--ink) 10%, transparent); border: 0;
-}
-#notes .nt-bar button.nt-save { background: var(--accent); color: var(--bg); }
-#notes .nt-msg { font-size: 13px; color: var(--muted); }
-#notes-toggle {
-  position: fixed; right: 16px; bottom: 16px; z-index: 41; font: 600 13px/1 var(--font);
-  padding: 8px 12px; border-radius: 999px; border: 0; cursor: pointer;
-  color: var(--ink); background: color-mix(in srgb, var(--ink) 12%, transparent);
-}
-body.notes-open #notes-toggle { bottom: calc(var(--notes-h) + 12px); }
-.slide .talk { display: none !important; }
-/* 사진 자리: 사용자가 나중에 줄 사진이 들어갈 칸. <div class="photo-slot" data-want="교실에서 모둠 활동"></div> */
-.photo-slot {
-  height: 100%; max-width: 100%; aspect-ratio: var(--ar, 4/3); margin: 0 auto; box-sizing: border-box;
-  border: 3px dashed color-mix(in srgb, var(--ink) 30%, transparent); border-radius: 28px;
-  display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 14px; padding: 40px;
-  color: var(--muted); text-align: center;
-}
-.photo-slot::before { content: '사진 자리'; font: 700 34px/1 var(--font); color: var(--ink); opacity: .55; }
-.photo-slot::after { content: attr(data-want); font: 400 28px/1.4 var(--font); }
-@media print { #notes, #notes-toggle { display: none !important; } body.notes-open #view { bottom: 0; } }
-</style>
 
-<div id="notes" data-noclick>
-  <div class="nt-grip" title="끌어서 높이 조절 · 더블클릭하면 원래대로"></div>
-  <div class="nt-col">
-    <p class="nt-label"><button class="nt-pop" type="button" title="발표자 창을 따로 띄워요 — 지금 장·다음 장·말할 거리·타이머">말할 거리 <span aria-hidden="true">↗</span> <em>발표자 창</em></button> <span class="nt-where"></span></p>
-    <div class="nt-talk"></div>
-  </div>
-  <div class="nt-col">
-    <div class="nt-overall">
-      <p class="nt-label">전체 메모 — 덱 전체에 대한 수정 요청</p>
-      <textarea class="nt-all" placeholder="예: 전체적으로 짤을 더 넣어 줘 / 3장과 4장 순서 바꿔"></textarea>
-    </div>
-    <p class="nt-label">수정 메모 — 이 장</p>
-    <textarea class="nt-memo" placeholder="예: 이 짤 별로, 사진으로 바꿔 / 단어를 '시행착오'로"></textarea>
-    <div class="nt-bar">
-      <button class="nt-save" type="button">저장 (Ctrl+S)</button>
-      <span class="nt-msg"></span>
-    </div>
-  </div>
-</div>
-<button id="notes-toggle" type="button" data-noclick>노트 (N)</button>
-
-<script>
-(() => {
-  const slidesN = [...document.querySelectorAll('.slide')];
-  const pane = document.getElementById('notes');
-  const talkBox = pane.querySelector('.nt-talk');
-  const where = pane.querySelector('.nt-where');
-  const memo = pane.querySelector('.nt-memo');
-  const all = pane.querySelector('.nt-all');
-  const msg = pane.querySelector('.nt-msg');
-  const ver = (document.querySelector('meta[name="deck-version"]') || {}).content || '1';
-  const KEY = 'deck-notes:' + location.pathname + ':v' + ver;
-  const st = (() => { try { return JSON.parse(localStorage.getItem(KEY)) || {}; } catch { return {}; } })();
-  st.slides = st.slides || {}; st.overall = st.overall || '';
-  const keep = () => { try { localStorage.setItem(KEY, JSON.stringify(st)); } catch {} };
-  const idOf = (s, i) => s.dataset.id || String(i + 1);
-  let idx = 0;
-
-  function show() {
-    idx = Math.max(0, slidesN.findIndex(s => s.classList.contains('on')));
-    const s = slidesN[idx];
-    const t = s.querySelector('.talk');
-    talkBox.innerHTML = t ? t.innerHTML.trim() : '';
-    where.textContent = `· ${idx + 1}장 ${s.dataset.title || ''}`;
-    memo.value = st.slides[idOf(s, idx)] || '';
-    pane.classList.toggle('first', idx === 0);
-    all.value = st.overall;
-    queuePv();
-  }
-  memo.addEventListener('input', () => { const s = slidesN[idx]; const k = idOf(s, idx); if (memo.value.trim()) st.slides[k] = memo.value; else delete st.slides[k]; keep(); autoSave(); });
-  all.addEventListener('input', () => { st.overall = all.value; keep(); autoSave(); });
-  new MutationObserver(show).observe(document.getElementById('stage'), { subtree: true, attributes: true, attributeFilter: ['class'] });
-
-  function toggle(open) {
-    document.body.classList.toggle('notes-open', open);
-    try { localStorage.setItem('deck-notes-open', open ? '1' : '0'); } catch {}
-  }
-  // 위 테두리를 끌어 높이 조절 (기억해 둠, 더블클릭하면 원래대로)
-  const grip = pane.querySelector('.nt-grip');
-  const setH = px => {
-    if (px == null) document.documentElement.style.removeProperty('--notes-h');
-    else document.documentElement.style.setProperty('--notes-h', Math.round(Math.min(Math.max(px, 120), innerHeight * 0.85)) + 'px');
-    dispatchEvent(new Event('resize'));
-  };
-  try { const h = Number(localStorage.getItem('deck-notes-h')); if (h) setH(h); } catch {}
-  grip.addEventListener('pointerdown', e => {
-    e.preventDefault(); grip.setPointerCapture(e.pointerId); document.body.classList.add('nt-dragging');
-    const move = ev => setH(innerHeight - ev.clientY);
-    const up = () => {
-      grip.removeEventListener('pointermove', move); grip.removeEventListener('pointerup', up); grip.removeEventListener('pointercancel', up);
-      document.body.classList.remove('nt-dragging');
-      try { localStorage.setItem('deck-notes-h', String(pane.getBoundingClientRect().height)); } catch {}
-    };
-    grip.addEventListener('pointermove', move); grip.addEventListener('pointerup', up); grip.addEventListener('pointercancel', up);
-  });
-  grip.addEventListener('dblclick', () => { setH(null); try { localStorage.removeItem('deck-notes-h'); } catch {} });
-  document.getElementById('notes-toggle').onclick = () => toggle(!document.body.classList.contains('notes-open'));
-  addEventListener('keydown', e => {
-    if (e.ctrlKey || e.metaKey || e.altKey) return;
-    if (e.target.closest && e.target.closest('input, textarea, select, [contenteditable]')) return;
-    if (e.code === 'KeyN') toggle(!document.body.classList.contains('notes-open'));
-  });
-
-  function payload() {
-    const list = slidesN.map((s, i) => ({ n: i + 1, id: idOf(s, i), title: s.dataset.title || '', memo: (st.slides[idOf(s, i)] || '').trim() })).filter(x => x.memo);
-    const d = new Date(); const p = n => String(n).padStart(2, '0');
-    return JSON.stringify({
-      deck: decodeURIComponent(location.pathname.split('/').pop()),
-      deck_version: ver,
-      saved_at: `${d.getFullYear()}-${p(d.getMonth() + 1)}-${p(d.getDate())} ${p(d.getHours())}:${p(d.getMinutes())}`,
-      overall: st.overall.trim(),
-      slides: list
-    }, null, 2);
-  }
-  // '발표 열기.bat'(deck-serve.py)로 열면 메모를 쓰는 대로 덱 폴더의 '수정 요청.json'에 저절로 쓴다.
-  // HTML을 그냥 더블클릭해 열면(file://) 브라우저가 폴더에 못 쓰게 하므로 초안만 남고 [저장]은 다운로드 폴더로 받는다.
-  const served = location.protocol.startsWith('http');
-  let autoTimer = 0;
-  async function postNotes() {
-    const r = await fetch('/__notes', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: payload() });
-    if (!r.ok) throw new Error(r.status);
-  }
-  function autoSave() {
-    if (!served) { msg.textContent = '초안 보관됨 · 자동 저장은 덱 폴더의 "발표 열기.bat"로 열었을 때만'; return; }
-    msg.textContent = '쓰는 중…';
-    clearTimeout(autoTimer);
-    autoTimer = setTimeout(() => postNotes()
-      .then(() => { msg.textContent = '자동 저장됨 → 덱 폴더 수정 요청.json · 다 쓰면 터미널에 "고쳐"'; })
-      .catch(() => { msg.textContent = '자동 저장 실패 — "발표 열기" 검은 창이 닫혔나 봐요. 다시 여세요'; }), 800);
-  }
-  function saveFile() {
-    clearTimeout(autoTimer);
-    if (served) { autoTimer = 1; postNotes().then(() => { msg.textContent = '저장됨 → 덱 폴더 수정 요청.json · 터미널에 "고쳐"'; }).catch(() => { msg.textContent = '저장 실패 — "발표 열기" 검은 창이 닫혔나 봐요'; }); return; }
-    const deckName = decodeURIComponent(location.pathname.split('/').pop()).replace(/\.html?$/i, '');
-    const a = document.createElement('a');
-    a.href = URL.createObjectURL(new Blob([payload()], { type: 'application/json' }));
-    a.download = `수정 요청 - ${deckName}.json`; a.click(); setTimeout(() => URL.revokeObjectURL(a.href), 1000);
-    msg.textContent = '다운로드 폴더에 저장됨 → 터미널에 "고쳐" (자동 저장은 "발표 열기.bat"로 열면 돼요)';
-  }
-  pane.querySelector('.nt-save').onclick = saveFile;
-
-  // ── 발표자 창: 노트 창의 '말할 거리 ↗'를 누르면 따로 뜬다 (지금 장·다음 장·말할 거리·타이머·시계).
-  // 빈 창(about:blank)을 열고 이 덱이 그 안을 직접 그린다 → HTML을 더블클릭해 연 file://에서도 된다.
-  // 발표자 창에서 넘기면 이 덱의 next()/prev()를 부르고, 덱이 바뀌면(클릭·키·목차·D·M) 발표자 창이 따라 그린다.
-  let pw = null, pv = null, pvQ = false;
-  let t0 = Date.now(), pausedMs = 0, pausedAt = 0;
-  const pvAlive = () => !!(pw && !pw.closed && pv && pv.doc === pw.document);
-  function queuePv() { if (pvQ) return; pvQ = true; queueMicrotask(() => { pvQ = false; renderPresenter(); }); }
-  const PV_CSS = `
-html, body { margin: 0; height: 100%; overflow: hidden; background: var(--bg); color: var(--ink); font-family: var(--font); }
-.pv { position: fixed; inset: 0; display: grid; grid-template-rows: auto minmax(0, 1fr); gap: 14px; padding: 16px 20px 18px; box-sizing: border-box; }
-.pv-top { display: flex; align-items: center; gap: 14px; min-width: 0; }
-.pv-n { font: 700 22px/1 var(--font); font-variant-numeric: tabular-nums; white-space: nowrap; }
-.pv-n small { font-size: 15px; font-weight: 600; color: var(--muted); }
-.pv-title { flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-size: 17px; color: var(--muted); }
-.pv-timer { font: 700 30px/1 var(--font); font-variant-numeric: tabular-nums; letter-spacing: .02em; }
-.pv.paused .pv-timer { color: var(--muted); }
-.pv-clock { font: 600 17px/1 var(--font); font-variant-numeric: tabular-nums; color: var(--muted); padding-left: 6px; }
-/* 왼쪽 = 지금 화면 + 그 장의 말할 거리, 오른쪽 = 다음 화면을 크게 (2026-11-10 사용자: "다음 페이지 더 크게", "말할 거리는 현재 슬라이드에") */
-.pv-main { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.7fr); gap: 20px; min-height: 0; }
-.pv-col { display: flex; flex-direction: column; gap: 10px; min-height: 0; min-width: 0; }
-.pv-label { margin: 0; font: 700 13px/1.2 var(--font); color: var(--muted); display: flex; align-items: center; gap: 8px; min-height: 30px; }
-.pv-label b { color: var(--ink); font-weight: 700; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-.pv-frame { position: relative; overflow: hidden; border-radius: 12px; outline: 1px solid color-mix(in srgb, var(--ink) 16%, transparent); }
-.pv-now { aspect-ratio: 16 / 9; width: 100%; flex: none; cursor: pointer; }
-.pv-next { aspect-ratio: 16 / 9; width: 100%; max-height: calc(100% - 40px); flex: none; }
-.pv-box { position: absolute; left: 0; top: 0; width: 1920px; height: 1080px; transform-origin: 0 0; background: var(--bg); }
-.pv-box .slide, .pv-box .slide * { transition: none !important; }
-.pv-end { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; color: var(--muted); font-size: 16px; background: color-mix(in srgb, var(--ink) 5%, transparent); }
-.pv-talkwrap { flex: 1; min-height: 0; display: flex; flex-direction: column; gap: 6px; }
-.pv-talk { flex: 1; min-height: 0; overflow: auto; font-size: var(--pv-fs, 24px); line-height: 1.6; padding-right: 8px; }
-.pv-talk ul, .pv-talk ol { margin: 0; padding-left: 1.15em; }
-.pv-talk li { margin: 0 0 .55em; }
-.pv-talk:empty::before { content: '이 장은 말할 거리가 없어요'; color: var(--muted); }
-.pv-bar { display: flex; align-items: center; gap: 10px; }
-.pv-prog { flex: 1; height: 4px; border-radius: 2px; background: color-mix(in srgb, var(--ink) 12%, transparent); overflow: hidden; }
-.pv-prog i { display: block; height: 100%; width: 0; background: var(--accent); }
-.pv button { font: 600 14px/1 var(--font); padding: 9px 13px; border-radius: 9px; border: 0; cursor: pointer; color: var(--ink); background: color-mix(in srgb, var(--ink) 10%, transparent); white-space: nowrap; }
-.pv button:hover { background: color-mix(in srgb, var(--ink) 17%, transparent); }
-.pv button:focus:not(:focus-visible) { outline: none; }
-.pv button.pv-go { background: var(--accent); color: var(--bg); padding: 11px 22px; font-size: 15px; }
-.pv-sp { flex: 1; }
-.pv-hint { font-size: 12px; color: var(--muted); }
-.pv-lost { position: fixed; inset: 0; z-index: 9; display: none; align-items: center; justify-content: center; text-align: center; padding: 40px; font-size: 18px; line-height: 1.7; background: color-mix(in srgb, var(--bg) 90%, transparent); }
-.pv.lost .pv-lost { display: flex; }
-@media (max-width: 820px) {
-  .pv-main { grid-template-columns: minmax(0, 1fr); }
-  .pv-col.pv-right, .pv-hint { display: none; }
-}`;
-  const PV_HTML = `
-<div class="pv">
-  <div class="pv-top">
-    <span class="pv-n"></span><span class="pv-title"></span>
-    <span class="pv-timer">0:00</span>
-    <button class="pv-pause" type="button" title="타이머 멈춤/계속">멈춤</button>
-    <button class="pv-reset" type="button" title="타이머 0으로">↺</button>
-    <span class="pv-clock"></span>
-  </div>
-  <div class="pv-main">
-    <div class="pv-col">
-      <p class="pv-label">지금 화면</p>
-      <div class="pv-frame pv-now" title="오른쪽 반 누르면 다음, 왼쪽 반 누르면 이전"><div class="pv-box"></div></div>
-      <div class="pv-bar">
-        <button class="pv-prev" type="button">← 이전</button>
-        <button class="pv-go" type="button">다음 →</button>
-        <div class="pv-prog"><i></i></div>
-        <span class="pv-hint">→ · Space 다음 / ← 이전</span>
-      </div>
-      <div class="pv-talkwrap">
-        <p class="pv-label">말할 거리 <span class="pv-sp"></span>
-          <button class="pv-fs" data-d="-2" type="button" title="글자 작게">가−</button>
-          <button class="pv-fs" data-d="2" type="button" title="글자 크게">가+</button></p>
-        <div class="pv-talk"></div>
-      </div>
-    </div>
-    <div class="pv-col pv-right">
-      <p class="pv-label">다음 · <b class="pv-nextname"></b></p>
-      <div class="pv-frame pv-next"><div class="pv-box"></div></div>
-    </div>
-  </div>
-  <div class="pv-lost">덱 창이 닫히거나 새로 고쳐져서 연결이 끊겼어요.<br>이 창을 닫고, 덱에서 N → '말할 거리 ↗'를 다시 누르세요.</div>
-</div>`;
-
-  function openPresenter() {
-    if (pvAlive()) { pw.focus(); return; }
-    // 같은 이름 창이 이미 있으면(덱을 새로 고친 뒤 등) 그 창을 다시 쓴다
-    const FEAT = 'popup,width=1280,height=800';
-    pw = window.open('', 'deck-presenter', FEAT);
-    if (!pw) { msg.textContent = '발표자 창이 막혔어요 — 주소창 오른쪽 팝업 차단 아이콘에서 허용해 주세요'; return; }
-    if (!canTouch(pw)) {
-      // 남아 있던 옛 발표자 창(file:// 덱을 새로 고치기 전 것)은 출처가 달라 손을 못 댄다 → 닫고 새 이름으로 연다
-      try { pw.close(); } catch {}
-      pw = window.open('', 'deck-presenter-' + Date.now(), FEAT);
-      if (!pw || !canTouch(pw)) { msg.textContent = '발표자 창을 못 열었어요 — 열려 있는 발표자 창을 닫고 다시 누르세요'; return; }
-    }
-    startPresenter();
-  }
-  function canTouch(w) { try { return !!w.document.documentElement; } catch { return false; } }
-  function startPresenter() { buildPresenter(); renderPresenter(); pw.focus(); }
-  function buildPresenter() {
-    const d = pw.document;
-    d.open();
-    d.write('<!doctype html><html lang="ko"><head><meta charset="utf-8"><title>발표자 창 · ' + (document.title || '덱').replace(/</g, '&lt;') + '</title></head><body></body></html>');
-    d.close();
-    const base = d.createElement('base'); base.href = location.href; d.head.appendChild(base);
-    // 덱의 글꼴·테마·브랜드·장 배치 CSS를 그대로 가져온다 (미리보기가 실제 화면과 같아야 하니까)
-    document.querySelectorAll('link[rel="preconnect"], link[rel="stylesheet"], style').forEach(n => d.head.appendChild(d.importNode(n, true)));
-    const css = d.createElement('style'); css.textContent = PV_CSS; d.head.appendChild(css);
-    d.body.innerHTML = PV_HTML;
-    const q = s => d.querySelector(s);
-    pv = { doc: d, root: q('.pv'), n: q('.pv-n'), title: q('.pv-title'), timer: q('.pv-timer'), clock: q('.pv-clock'),
-      now: q('.pv-now'), next: q('.pv-next'), nextName: q('.pv-nextname'), talk: q('.pv-talk'), prog: q('.pv-prog i') };
-    let fs = 24; try { fs = Number(localStorage.getItem('deck-pv-fs')) || 24; } catch {}
-    const setFs = v => { fs = Math.min(48, Math.max(14, v)); pv.root.style.setProperty('--pv-fs', fs + 'px'); try { localStorage.setItem('deck-pv-fs', String(fs)); } catch {} };
-    setFs(fs);
-    d.querySelectorAll('.pv-fs').forEach(b => b.onclick = () => setFs(fs + Number(b.dataset.d)));
-    q('.pv-go').onclick = () => deckMove(1);
-    q('.pv-prev').onclick = () => deckMove(-1);
-    q('.pv-reset').onclick = () => { t0 = Date.now(); pausedMs = 0; if (pausedAt) pausedAt = Date.now(); tick(); };
-    q('.pv-pause').onclick = e => {
-      if (pausedAt) { pausedMs += Date.now() - pausedAt; pausedAt = 0; e.currentTarget.textContent = '멈춤'; }
-      else { pausedAt = Date.now(); e.currentTarget.textContent = '계속'; }
-      pv.root.classList.toggle('paused', !!pausedAt); tick();
-    };
-    pv.now.onclick = e => { const r = pv.now.getBoundingClientRect(); deckMove(e.clientX - r.left > r.width / 2 ? 1 : -1); };
-    // 덱과 같은 키 (리모컨·클리커는 PageDown/PageUp을 보낸다). 글자 키는 e.code라 한글 입력 상태에서도 된다
-    d.addEventListener('keydown', e => {
-      if (e.ctrlKey || e.metaKey || e.altKey) return;
-      if (['ArrowRight', 'ArrowDown', 'PageDown', ' '].includes(e.key) || (e.key === 'Enter' && !e.shiftKey)) { e.preventDefault(); deckMove(1); }
-      else if (['ArrowLeft', 'ArrowUp', 'PageUp', 'Backspace'].includes(e.key) || (e.key === 'Enter' && e.shiftKey)) { e.preventDefault(); deckMove(-1); }
-      else if (e.code === 'KeyD' && typeof setTheme === 'function') setTheme(document.documentElement.dataset.theme === 'dark' ? 'light' : 'dark');
-      else if (e.code === 'KeyM' && typeof nextBrand === 'function') nextBrand(e.shiftKey ? -1 : 1);
-    });
-    new pw.ResizeObserver(fitPv).observe(pv.now);
-    new pw.ResizeObserver(fitPv).observe(pv.next);
-    pw.setInterval(tick, 250);
-    tick();
-  }
-  function deckMove(dir) {
-    if (dir > 0 && typeof next === 'function') next();
-    else if (dir < 0 && typeof prev === 'function') prev();
-    queuePv();
-  }
-  function tick() {
-    if (!pvAlive()) return;
-    const sec = Math.max(0, Math.floor(((pausedAt || Date.now()) - t0 - pausedMs) / 1000));
-    const h = Math.floor(sec / 3600), m = Math.floor(sec / 60) % 60, s = sec % 60, p = n => String(n).padStart(2, '0');
-    pv.timer.textContent = h ? `${h}:${p(m)}:${p(s)}` : `${m}:${p(s)}`;
-    const now = new Date();
-    pv.clock.textContent = `${p(now.getHours())}:${p(now.getMinutes())}`;
-  }
-  function fitPv() {
-    if (!pvAlive()) return;
-    [pv.now, pv.next].forEach(f => {
-      const box = f.querySelector('.pv-box'), W = f.clientWidth, H = f.clientHeight;
-      if (!W || !H) return;
-      const s = Math.min(W / 1920, H / 1080);
-      box.style.transform = `translate(${(W - 1920 * s) / 2}px, ${(H - 1080 * s) / 2}px) scale(${s})`;
-    });
-  }
-  // 장 하나를 발표자 창 문서로 복제한다. shown = 보일 [data-step] 개수 (null이면 덱 상태 그대로)
-  function cloneSlide(s, shown) {
-    const c = pv.doc.importNode(s, true);
-    c.classList.add('on');
-    c.querySelectorAll('.talk').forEach(t => t.remove());
-    c.querySelectorAll('[id]').forEach(e => e.removeAttribute('id'));
-    c.querySelectorAll('video, audio').forEach(v => { v.removeAttribute('autoplay'); v.muted = true; v.setAttribute('preload', 'metadata'); });
-    if (shown != null) c.querySelectorAll('[data-step]').forEach((el, k) => el.classList.toggle('shown', k < shown));
-    return c;
-  }
-  function put(frame, node, empty) {
-    frame.querySelector('.pv-box').replaceChildren(...(node ? [node] : []));
-    const old = frame.querySelector('.pv-end'); if (old) old.remove();
-    if (!node) { const e = pv.doc.createElement('div'); e.className = 'pv-end'; e.textContent = empty; frame.appendChild(e); }
-  }
-  function renderPresenter() {
-    if (!pvAlive()) return;
-    const de = pv.doc.documentElement;
-    de.dataset.theme = document.documentElement.dataset.theme || 'dark';
-    de.dataset.brand = document.documentElement.dataset.brand || 'apple';
-    const i = Math.max(0, slidesN.findIndex(s => s.classList.contains('on')));
-    const s = slidesN[i];
-    const stepEls = [...s.querySelectorAll('[data-step]')];
-    const shownN = stepEls.filter(el => el.classList.contains('shown')).length;
-    pv.n.innerHTML = `${i + 1}<small> / ${slidesN.length}</small>`;
-    pv.title.textContent = s.dataset.title || '';
-    put(pv.now, cloneSlide(s, null));
-    if (shownN < stepEls.length) {
-      put(pv.next, cloneSlide(s, shownN + 1));
-      pv.nextName.textContent = `같은 장 · 하나 더 보이기 (${shownN + 1}/${stepEls.length})`;
-    } else if (i + 1 < slidesN.length) {
-      const n = slidesN[i + 1];
-      put(pv.next, cloneSlide(n, 0));
-      pv.nextName.textContent = `${i + 2}장 ${n.dataset.title || ''}`;
-    } else {
-      put(pv.next, null, '마지막 장이에요');
-      pv.nextName.textContent = '끝';
-    }
-    const t = s.querySelector('.talk');
-    const html = t ? t.innerHTML.trim() : '';
-    if (pv.talk.innerHTML !== html) { pv.talk.innerHTML = html; pv.talk.scrollTop = 0; }
-    pv.prog.style.width = ((i + 1) / slidesN.length * 100) + '%';
-    pv.root.classList.remove('lost');
-    fitPv();
-  }
-  pane.querySelector('.nt-pop').onclick = openPresenter;
-  new MutationObserver(queuePv).observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme', 'data-brand'] });
-  // 덱 창을 닫거나 새로 고치면 발표자 창도 닫는다 (다시 누르면 새로 열린다). 못 닫히면 '끊김' 안내가 남는다
-  addEventListener('pagehide', () => { if (pvAlive()) { pv.root.classList.add('lost'); try { pw.close(); } catch {} } });
-
-  try { if (localStorage.getItem('deck-notes-open') === '1') toggle(true); } catch {}
-  show();
-})();
-</script>
 
 </body>
 </html>
